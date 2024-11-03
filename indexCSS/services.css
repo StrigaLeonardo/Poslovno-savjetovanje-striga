@@ -1,0 +1,84 @@
+.services-section {
+  padding: 2em;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.services-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 900px;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.services-title {
+  font-size: 2em;
+  color: #333;
+  margin: 0 1em;
+  text-align: center;
+}
+
+.line {
+  display: inline-block;
+  width: 30%;
+  height: 2px;
+  background-color: rgb(209, 209, 209);
+}
+
+.services-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.service-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 1em;
+  margin: 0.5em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s;
+}
+
+.service-card:hover {
+  transform: scale(1.05);
+}
+
+.service-image {
+  width: 60px;
+  height: auto;
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
+.service-title {
+  font-size: 1.7em;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+  color: #2c3e50;
+}
+
+.service-description {
+  font-size: 1em;
+  color: #666;
+}
+
+.service-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  max-width: 50em;
+  width: 100%;
+}
+
+.service-card-link .service-card {
+  cursor: pointer;
+}

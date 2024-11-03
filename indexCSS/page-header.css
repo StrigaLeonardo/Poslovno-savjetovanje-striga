@@ -1,0 +1,124 @@
+.page-header {
+  display: flex;
+  justify-content: center;
+  padding-left: 5em;
+  background-color: #5f8aa3;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  box-sizing: border-box;
+  transition: padding-top 0.5s ease-in-out, background-color 0.5s ease-in-out;
+  border-bottom: solid 2px rgb(209, 209, 209);
+}
+
+.page-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.322);
+  z-index: 0;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1920px;
+  width: 100%;
+  padding: 0 2em;
+  box-sizing: border-box;
+  z-index: 1;
+  margin: 0;
+}
+
+.page-title {
+  font-size: 1.2em;
+  font-family: "Roboto", sans-serif;
+  margin-right: auto;
+}
+
+.page-title a {
+  color: #cdd9e8;
+  text-decoration: none;
+}
+
+.page-navigation {
+  display: flex;
+  gap: 3em;
+  font-size: 0.8em;
+  font-family: "Roboto", sans-serif;
+  margin-left: auto;
+  padding-top: 1em;
+}
+
+.page-navigation a {
+  color: #cdd9e8;
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.3s ease, color 0.3s ease;
+}
+
+.page-navigation a:hover {
+  color: #afafaf;
+  border-bottom: 2px solid #cdd9e8;
+}
+
+.lang a:hover {
+  color: #afafaf;
+  border-bottom: none;
+}
+
+.lang {
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+}
+
+.divider {
+  width: 0.1em;
+  height: 1em;
+  background-color: #cdd9e8;
+  margin: 0 0.7em;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #5f8aa3;
+  min-width: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 0.5em 0;
+  z-index: 100;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease, opacity 0.6s ease;
+}
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  max-height: 500px;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 0.5em 1em;
+  font-size: 1.2em;
+  color: #cdd9e8;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: #4a7a91;
+}

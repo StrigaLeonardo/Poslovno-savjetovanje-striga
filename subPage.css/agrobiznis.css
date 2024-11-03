@@ -1,0 +1,46 @@
+/* Agrobiznis-specific header and footer styling */
+.agrobiznis-page .page-header,
+.agrobiznis-page .page-footer {
+  background-color: #577d64;
+}
+
+.agrobiznis-page body {
+  background-color: #f9f9f9;
+}
+
+.intro-wrapper-agro {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  border-bottom: solid 2px rgb(209, 209, 209);
+}
+
+.banner-div-agro {
+  width: 100%;
+}
+
+.banner-div-agro img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.overlay-agro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.133);
+  z-index: 1;
+}
+
+.text-on-image-agro {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  z-index: 2;
+  font-size: 2em;
+}

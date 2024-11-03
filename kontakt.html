@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <title>Štriga poslovno savjetovanje</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Leonardo Štriga" />
+    <link rel="stylesheet" href="indexCSS/page-header.css" />
+    <link rel="stylesheet" href="indexCSS/font.css" />
+    <link rel="stylesheet" href="indexCSS/page-footer.css" />
+    <link rel="stylesheet" href="indexCSS/about-us.css" />
+    <link rel="stylesheet" href="indexCSS/profile-banner.css" />
+    <link rel="stylesheet" href="indexCSS/html.css" />
+    <link rel="stylesheet" href="indexCSS/services.css" />
+    <link rel="stylesheet" href="subPage.css/contact.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header></header>
+
+    <main>
+      <div class="contact-header">
+        <h1 class="contact-title roboto-light">Kontaktirajte nas</h1>
+        <span class="contact-line"></span>
+        <p class="contact-subtitle roboto-medium">
+          Pošaljite upit ili dogovorite sastanak.
+        </p>
+      </div>
+
+      <div class="contact-form-wrapper">
+        <form class="contact-form" id="contact-form" method="POST" action="">
+          <div class="form-columns">
+            <div class="left-column">
+              <div class="form-group">
+                <label for="name">Ime i Prezime*</label>
+                <input type="text" id="name" name="name" class="roboto-light" />
+              </div>
+
+              <div class="form-group">
+                <label for="naziv-tvrtke">Naziv tvrtke</label>
+                <input
+                  type="text"
+                  id="naziv-tvrtke"
+                  name="nazivTvrtke"
+                  autocomplete="off"
+                  class="roboto-light"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email adresa*</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="roboto-light"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Kontakt broj*</label>
+                <input
+                  type="tel"
+                  id="telephone"
+                  name="telephone"
+                  class="roboto-light"
+                />
+              </div>
+            </div>
+
+            <div class="right-column">
+              <div class="form-group">
+                <label for="subject">Naslov*</label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  autocomplete="off"
+                  class="roboto-light"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="message">Poruka*</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="6"
+                  class="roboto-light"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="button-container">
+            <div class="button-container">
+              <button type="submit" class="send-button roboto-medium">
+                <span id="send-icon" class="icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="black"
+                  >
+                    <path
+                      d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"
+                    />
+                  </svg>
+                </span>
+                <span id="success-icon" class="icon" style="display: none">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="black"
+                  >
+                    <path
+                      d="M638-80 468-250l56-56 114 114 226-226 56 56L638-80ZM480-520l320-200H160l320 200Zm0 80L160-640v400h206l80 80H160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v174l-80 80v-174L480-440Zm0 0Zm0-80Zm0 80Z"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+        </form>
+        <div id="submission-error" style="color: red; display: none"></div>
+      </div>
+    </main>
+    <footer></footer>
+
+    <script src="app.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script src="contact.js"></script>
+  </body>
+</html>
