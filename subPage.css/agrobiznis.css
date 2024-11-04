@@ -37,10 +37,32 @@
 
 .text-on-image-agro {
   position: absolute;
-  top: 65%;
+  top: 67%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
+  color: #cdd9e8;
   z-index: 2;
-  font-size: 2em;
+  font-size: 2.7em;
+  text-shadow: 4px 4px 6px rgb(0, 0, 0);
+  white-space: nowrap;
+  text-align: center;
+}
+.text-on-image-agro::after {
+  content: "";
+  position: absolute;
+  bottom: 0.5em;
+  left: 5%;
+  width: 90%;
+  height: 2px;
+  background-color: #cdd9e8;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.subtext-agro {
+  position: relative;
+  top: 0.5em;
+  font-size: 0.5em;
+  color: #cdd9e8;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  white-space: nowrap;
 }

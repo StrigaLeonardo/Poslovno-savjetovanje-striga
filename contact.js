@@ -56,23 +56,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const nameInput = document.getElementById("name");
     const emailInput = document.getElementById("email");
-    const subjectInput = document.getElementById("subject");
     const messageInput = document.getElementById("message");
     const telephoneInput = document.getElementById("telephone");
 
     let errors = [];
 
-    [nameInput, emailInput, subjectInput, messageInput, telephoneInput].forEach(
-      (input) => {
-        input.style.borderColor = "";
-        input.placeholder = "";
-      }
-    );
+    [nameInput, emailInput, messageInput, telephoneInput].forEach((input) => {
+      input.style.borderColor = "";
+      input.placeholder = "";
+    });
 
     if (!nameInput.value.trim()) {
       errors.push("Ime i Prezime je obavezno.");
       nameInput.style.borderColor = "red";
-      nameInput.placeholder = "    Ime i Prezime je obavezno.";
+      nameInput.placeholder = "Ime i Prezime je obavezno.";
     } else if (nameInput.value.length > 50) {
       errors.push("Ime ne može biti duže od 50 znakova.");
       nameInput.style.borderColor = "red";
@@ -82,27 +79,17 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!emailInput.value.trim()) {
       errors.push("Email adresa je obavezna.");
       emailInput.style.borderColor = "red";
-      emailInput.placeholder = "    Email adresa je obavezna.";
+      emailInput.placeholder = "Email adresa je obavezna.";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
       errors.push("Unesite važeću email adresu.");
       emailInput.style.borderColor = "red";
       emailInput.placeholder = "Unesite važeću email adresu.";
     }
 
-    if (!subjectInput.value.trim()) {
-      errors.push("Naslov je obavezan.");
-      subjectInput.style.borderColor = "red";
-      subjectInput.placeholder = "    Naslov je obavezan.";
-    } else if (subjectInput.value.length > 100) {
-      errors.push("Naslov ne može biti duži od 100 znakova.");
-      subjectInput.style.borderColor = "red";
-      subjectInput.placeholder = "Naslov ne može biti duži od 100 znakova.";
-    }
-
     if (!messageInput.value.trim()) {
       errors.push("Poruka je obavezna.");
       messageInput.style.borderColor = "red";
-      messageInput.placeholder = "    Poruka je obavezna.";
+      messageInput.placeholder = "Poruka je obavezna.";
     } else if (messageInput.value.length > 800) {
       errors.push("Poruka ne može biti duža od 800 znakova.");
       messageInput.style.borderColor = "red";
@@ -112,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!telephoneInput.value.trim()) {
       errors.push("Telefonski broj je obavezan.");
       telephoneInput.style.borderColor = "red";
-      telephoneInput.placeholder = "    Telefonski broj je obavezan.";
+      telephoneInput.placeholder = "Telefonski broj je obavezan.";
     }
 
     if (errors.length > 0) {
@@ -135,9 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const userEmailParams = {
           name: formData.get("name"),
           email: formData.get("email"),
-          subject: formData.get("subject"),
           message: formData.get("message"),
-          nazivTvrtke: formData.get("nazivTvrtke") || "-",
           telephone: formData.get("telephone"),
         };
 

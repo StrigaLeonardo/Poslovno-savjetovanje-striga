@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="indexCSS/profile-banner.css" />
     <link rel="stylesheet" href="indexCSS/html.css" />
     <link rel="stylesheet" href="indexCSS/services.css" />
+    <link rel="stylesheet" href="indexCSS/about-us-section.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,10 +28,11 @@
     <main>
       <div class="intro-wrapper">
         <div class="banner-div">
-          <img src="photos/zagreb22.jpg" alt="zagreb-skyline" />
+          <img src="photos/zagreb3.jpg" alt="zagreb-skyline" />
           <div class="overlay"></div>
           <div class="text-on-image roboto-light">
-            Lorem ipsum dolor sit amet
+            Podrška za svaki korak naprijed
+            <div class="subtext">i za one koji su krenuli unazad</div>
           </div>
         </div>
       </div>
@@ -39,77 +41,82 @@
           <span class="line"></span>
           <h2 class="services-title roboto-light">Naše Usluge</h2>
           <span class="line"></span>
+          <p class="services-description roboto-light">
+            Pomažemo malim i srednjim poduzećima da ostvare svoje ciljeve kroz
+            strateško savjetovanje i inovativna rješenja, te im pružamo podršku
+            i resurse za kontinuirani rast i inovacije.
+          </p>
         </div>
-        <div class="services-container">
-          <a href="#" class="service-card-link">
-            <div class="service-card">
-              <div class="service-image-container">
-                <img class="service-image" src="photos/profit.png" />
-              </div>
-              <div class="service-text-container">
-                <h3 class="service-title roboto-light">
-                  Financijsko savjetovanje
-                </h3>
+        <div class="services-content">
+          <div class="services-cards-container">
+            <!-- Service Cards -->
+            <a href="#" class="service-card-link">
+              <div class="service-card">
+                <div class="service-header">
+                  <div class="service-image-container">
+                    <img class="service-image" src="photos/profit.png" />
+                  </div>
+                  <h3 class="service-title roboto-light">
+                    Financijsko savjetovanje
+                  </h3>
+                </div>
                 <p class="service-description">
                   Investicijske studije, financijsko modeliranje, izdanje
                   obveznica, upravljanje rizicima.
                 </p>
               </div>
-            </div>
-          </a>
+            </a>
 
-          <a href="#" class="service-card-link">
-            <div class="service-card">
-              <div class="service-image-container">
-                <img class="service-image" src="photos/strategy.png" />
+            <a href="#" class="service-card-link">
+              <div class="service-card">
+                <div class="service-header">
+                  <div class="service-image-container">
+                    <img class="service-image" src="photos/esg.png" />
+                  </div>
+                  <h3 class="service-title roboto-light">Održivo poslovanje</h3>
+                </div>
+                <p class="service-description">
+                  Savjetovanje za održivost i implementaciju zelenih praksi.
+                </p>
               </div>
-              <div class="service-text-container">
-                <h3 class="service-title roboto-light">
-                  Strateško savjetovanje
-                </h3>
+            </a>
+
+            <a href="#" class="service-card-link">
+              <div class="service-card">
+                <div class="service-header">
+                  <div class="service-image-container">
+                    <img class="service-image" src="photos/strategy.png" />
+                  </div>
+                  <h3 class="service-title roboto-light">
+                    Strateško savjetovanje
+                  </h3>
+                </div>
                 <p class="service-description">
                   Poslovno planiranje, strateško planiranje i operativna
                   optimizacija, analiza tržišta i konkurencije, upravljanje
                   promjenama.
                 </p>
               </div>
-            </div>
-          </a>
+            </a>
 
-          <a href="#" class="service-card-link">
-            <div class="service-card">
-              <div class="service-image-container">
-                <img class="service-image" src="photos/esg.png" />
-              </div>
-              <div class="service-text-container">
-                <h3 class="service-title roboto-light">
-                  Održivo poslovanje i ekološka učinkovitost
-                </h3>
-                <p class="service-description">
-                  Savjetovanje za održivost i implementaciju zelenih praksi.
-                </p>
-              </div>
-            </div>
-          </a>
-
-          <a href="#" class="service-card-link">
-            <div class="service-card">
-              <div class="service-image-container">
-                <img class="service-image" src="photos/coin.png" />
-              </div>
-              <div class="service-text-container">
-                <h3 class="service-title roboto-light">
-                  Specijalizirane usluge za agrobiznis i međunarodno poslovanje
-                </h3>
+            <a href="#" class="service-card-link">
+              <div class="service-card">
+                <div class="service-header">
+                  <div class="service-image-container">
+                    <img class="service-image" src="photos/coin.png" />
+                  </div>
+                  <h3 class="service-title roboto-light">
+                    Agrobiznis i ruralni razvoj
+                  </h3>
+                </div>
                 <p class="service-description">
                   Poslovno planiranje za agrobiznis, prijave za fondove
                   (uključujući EU), izvoz i međunarodno poslovanje za
-                  agrobiznis, održivo poslovanje i ekološka učinkovitost u
-                  agrobiznisu.
+                  agrobiznis.
                 </p>
               </div>
-            </div>
-          </a>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -118,7 +125,7 @@
           <div class="profile-photo">
             <img src="photos/splatter-rackley.png" class="splatter-image" />
 
-            <img src="photos/tajana-bg-remove.png" class="profile-image" />
+            <img src="photos/tajana-no-bg.png" class="profile-image" />
           </div>
 
           <div class="profile-text">
@@ -136,6 +143,28 @@
           >Saznajte više.</a
         >
       </div>
+
+      <section class="about-us-section">
+        <div class="about-us-content">
+          <h2 class="about-us-title roboto-light">Zašto odabrati nas?</h2>
+          <p class="about-us-text roboto-light">
+            Razumijemo da svaki klijent ima specifične izazove i potrebe – zato
+            ne vjerujemo u univerzalna rješenja. Svaki naš pristup temelji se na
+            dubinskoj analizi tržišta i kreiranju individualnih rješenja
+            prilagođenih upravo vama. Naš cilj nije samo pomoći vam da ostvarite
+            svoje projekte, već da zajedno izgradimo dugoročni uspjeh koji će
+            vas izdvojiti na tržištu.
+            <br /><br />
+            Obratite nam se kako biste saznali više o našim uslugama i kako
+            možemo pomoći vašem poslovanju da raste i napreduje.
+          </p>
+          <div class="button-container">
+            <a href="kontakt.html" class="contact-button roboto-medium"
+              >Kontaktirajte nas</a
+            >
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer></footer>

@@ -2,83 +2,88 @@
   padding: 2em;
   background-color: #f9f9f9;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  margin: 2em auto;
+}
+
+.services-content {
+  display: flex;
+  max-width: 1200px;
+  gap: 2em;
 }
 
 .services-title-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 900px;
-  width: 100%;
-  margin-bottom: 1em;
+  max-width: 400px;
+  flex: 1;
+  margin: 4em 4em;
+  text-align: justify;
+}
+
+.services-cards-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2em;
+  flex: 2;
+}
+.line {
+  width: 60px;
+  height: 4px;
+  background-color: #d1486b;
+  margin-bottom: 0.5em;
 }
 
 .services-title {
   font-size: 2em;
-  color: #333;
-  margin: 0 1em;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.2em;
+  border-bottom: 2px solid #5f8aa3;
   text-align: center;
 }
 
-.line {
-  display: inline-block;
-  width: 30%;
-  height: 2px;
-  background-color: rgb(209, 209, 209);
-}
-
-.services-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
+.services-description {
+  font-size: 1.2em;
+  color: #666;
 }
 
 .service-card {
   background-color: #fff;
   border: 1px solid #ddd;
   padding: 1em;
-  margin: 0.5em;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
+  max-width: 350px;
+  min-height: 150px;
 }
 
 .service-card:hover {
   transform: scale(1.05);
 }
 
+.service-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
 .service-image {
-  width: 60px;
+  width: 40px;
   height: auto;
   margin-right: 1em;
-  margin-left: 1em;
 }
 
 .service-title {
-  font-size: 1.7em;
-  margin-bottom: 0.5em;
-  margin-top: 0.5em;
+  font-size: 1.5em;
   color: #2c3e50;
+  margin: 0;
 }
 
 .service-description {
-  font-size: 1em;
+  font-size: 1.1em;
   color: #666;
 }
 
 .service-card-link {
-  display: block;
   text-decoration: none;
   color: inherit;
-  max-width: 50em;
-  width: 100%;
-}
-
-.service-card-link .service-card {
-  cursor: pointer;
 }
