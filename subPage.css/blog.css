@@ -172,3 +172,18 @@ main {
 .return-button:hover {
   background-color: #3e5b66;
 }
+
+.blogger-image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.blogger-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2em;
+}

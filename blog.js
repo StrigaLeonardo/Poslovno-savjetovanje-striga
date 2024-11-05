@@ -143,30 +143,32 @@ if (document.getElementById("card-container")) {
   function renderSingleBlog(blog) {
     const blogContainer = document.querySelector(".blog-container");
     blogContainer.innerHTML = `
-        <div class="blog-post">
-          <div class="blog-info">
-            
-            <div class="blogger-details">
-              <label>Autor:</label>
-              <p class="roboto-medium">Tajana Štriga</p>
-              <label>Datum:</label>
-              <p class="roboto-light">${blog.date}</p>
-              <label>Naslov:</label>
-              <p class="roboto-light">${blog.title}</p>
+          <div class="blog-post">
+            <div class="blog-info">
+              <div class="blogger-image-container">
+                <img src="photos/tajana-blog.jpg" alt="Blogger Image" class="blogger-image" />
+              </div>
+              <div class="blogger-details">
+                <label>Autor:</label>
+                <p class="roboto-medium">Tajana Štriga</p>
+                <label>Datum:</label>
+                <p class="roboto-light">${blog.date}</p>
+                <label>Naslov:</label>
+                <p class="roboto-light">${blog.title}</p>
+              </div>
+            </div>
+            <div class="blog-content">
+              <h1 class="blog-main-title roboto-light">${blog.title}</h1>
+              <p class="blog-date roboto-light">${blog.date}</p>
+              <div class="blog-text">
+                <p>${blog.content}</p> 
+              </div>
             </div>
           </div>
-          <div class="blog-content">
-            <h1 class="blog-main-title roboto-light">${blog.title}</h1>
-            <p class="blog-date roboto-light">${blog.date}</p>
-            <div class="blog-text">
-              <p>${blog.content}</p> 
-            </div>
+          <div class="return-button-container">
+            <button class="return-button roboto-medium" onclick="returnToMainPage()">Nazad</button>
           </div>
-        </div>
-        <div class="return-button-container">
-          <button class="return-button roboto-medium" onclick="returnToMainPage()">Nazad</button>
-        </div>
-      `;
+        `;
   }
 }
 
