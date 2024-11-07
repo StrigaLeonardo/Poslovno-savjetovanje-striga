@@ -80,7 +80,7 @@ function setupScrollListener() {
 }
 
 // Function to check if an element is in the viewport with an adjustable offset
-function isElementInViewport(el, offset = 100) {
+function isElementInViewport(el, offset = 50) {
   // <-- Adjust default offset (100) if desired
   const rect = el.getBoundingClientRect();
   return (
