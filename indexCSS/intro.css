@@ -60,29 +60,44 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   white-space: nowrap;
 }
-/* Media Query for Smaller Devices */
-@media screen and (max-width: 768px) {
-  .text-on-image {
-    font-size: 1.8em;
-    top: 45%;
+
+/* Mobile view adjustments for Intro Wrapper */
+@media (max-width: 768px) {
+  .intro-wrapper {
+    border-bottom: solid 1px rgb(209, 209, 209);
   }
 
-  .subtext {
-    font-size: 0.6em;
+  .banner-div {
+    position: relative;
+    height: 25vh;
+    overflow: hidden;
   }
-}
 
-@media screen and (max-width: 480px) {
+  .banner-div img {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+  }
+
   .text-on-image {
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 1.5em;
-    top: 40%;
-  }
-
-  .subtext {
-    font-size: 0.5em;
+    padding: 0.3em 1em;
+    white-space: none;
   }
 
   .text-on-image::after {
-    display: none;
+    width: 80%;
+    bottom: 1em;
+  }
+
+  .subtext {
+    font-size: 0.8em;
+    text-align: center;
+    white-space: none;
   }
 }

@@ -21,8 +21,10 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       setupScrollListener();
-
       setupHamburgerMenu();
+
+      // Adjust main padding after header is loaded
+      adjustMainPadding();
     });
 
   // Load the footer
@@ -90,15 +92,33 @@ document.addEventListener("DOMContentLoaded", function () {
       const hamburgerMenu = document.createElement("button");
       hamburgerMenu.classList.add("hamburger-menu");
       hamburgerMenu.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#e8eaed">
+        <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#e8eaed">
           <path d="M120-240v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/>
+        </svg>
+        <svg class="close-icon hidden" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#e8eaed">
+          <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
         </svg>
       `;
       headerContainer.insertBefore(hamburgerMenu, pageNavigation);
 
-      // Add click event to toggle menu visibility
+      // Add click event to toggle menu visibility and icon
       hamburgerMenu.addEventListener("click", function () {
         pageNavigation.classList.toggle("show");
+
+        // Toggle icon
+        const hamburgerIcon = hamburgerMenu.querySelector(".hamburger-icon");
+        const closeIcon = hamburgerMenu.querySelector(".close-icon");
+        if (pageNavigation.classList.contains("show")) {
+          hamburgerIcon.classList.add("hidden");
+          closeIcon.classList.remove("hidden");
+          pageNavigation.style.maxHeight = `${pageNavigation.scrollHeight}px`;
+          pageNavigation.style.opacity = "1";
+        } else {
+          hamburgerIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+          pageNavigation.style.maxHeight = "0";
+          pageNavigation.style.opacity = "0";
+        }
       });
     }
 
@@ -108,12 +128,16 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!document.querySelector(".hamburger-menu")) {
           createHamburgerMenu();
         }
+        pageNavigation.style.maxHeight = "0";
+        pageNavigation.style.opacity = "0";
       } else {
         const hamburgerMenu = document.querySelector(".hamburger-menu");
         if (hamburgerMenu) {
           hamburgerMenu.remove();
           pageNavigation.classList.remove("show");
           pageNavigation.style.display = "flex";
+          pageNavigation.style.maxHeight = "";
+          pageNavigation.style.opacity = "";
         }
       }
     }
@@ -121,6 +145,25 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initial check and event listener for resizing
     handleResize();
     window.addEventListener("resize", handleResize);
+  }
+
+  // Function to adjust the padding of the main element dynamically
+  function adjustMainPadding() {
+    const header = document.querySelector(".page-header");
+    const mainContent = document.querySelector("main");
+
+    function setMainPadding() {
+      if (header && mainContent) {
+        const headerHeight = header.offsetHeight;
+        mainContent.style.paddingTop = `${headerHeight}px`;
+      }
+    }
+
+    // Adjust padding on load
+    setMainPadding();
+
+    // Adjust padding on window resize
+    window.addEventListener("resize", setMainPadding);
   }
 
   function isElementInViewport(el, offset = 50) {

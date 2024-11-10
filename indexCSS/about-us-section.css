@@ -38,3 +38,38 @@
 .contact-button:hover {
   background-color: #3e5b66;
 }
+
+/* About Us Section for Mobile View */
+@media (max-width: 768px) {
+  .about-us-section {
+    padding: 1.5em;
+  }
+
+  .about-us-content {
+    max-width: 100%;
+    margin: 0 1em;
+    display: block; /* Ensure the content is displayed */
+  }
+
+  .about-us-title {
+    font-size: 1.6em;
+    display: block; /* Ensure the title is displayed */
+  }
+
+  .about-us-text {
+    font-size: 1em;
+    display: block; /* Ensure the text is displayed */
+  }
+
+  .contact-button {
+    font-size: 0.9em;
+    padding: 0.6em 1.2em;
+    display: inline-block; /* Ensure the button is displayed */
+  }
+
+  img {
+    max-width: 100%; /* Ensure images are responsive */
+    height: auto; /* Maintain aspect ratio for images */
+    display: block; /* Ensure images are displayed */
+  }
+}
