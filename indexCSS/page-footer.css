@@ -103,3 +103,37 @@
 .linkedin-icon {
   transition: fill 0.3s ease;
 }
+
+/* Media Query for Smaller Devices */
+@media screen and (max-width: 768px) {
+  .page-footer {
+    padding: 1.5em;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 1.5em;
+    align-items: center;
+  }
+
+  .page-title-footer {
+    font-size: 1.2em;
+  }
+
+  .page-navigation-footer {
+    gap: 1em;
+    font-size: 0.7em;
+    margin-top: 1.5em;
+  }
+
+  .information-footer {
+    font-size: 0.7em;
+    line-height: 1.4em;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .copyright {
+    font-size: 0.7em;
+  }
+}

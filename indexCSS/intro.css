@@ -60,3 +60,29 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   white-space: nowrap;
 }
+/* Media Query for Smaller Devices */
+@media screen and (max-width: 768px) {
+  .text-on-image {
+    font-size: 1.8em;
+    top: 45%;
+  }
+
+  .subtext {
+    font-size: 0.6em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .text-on-image {
+    font-size: 1.5em;
+    top: 40%;
+  }
+
+  .subtext {
+    font-size: 0.5em;
+  }
+
+  .text-on-image::after {
+    display: none;
+  }
+}

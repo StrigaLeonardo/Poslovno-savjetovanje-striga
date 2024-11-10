@@ -12,3 +12,9 @@ html {
 main {
   padding-top: 6em;
 }
+
+@media (max-width: 768px) {
+  main {
+    padding-top: 7em;
+  }
+}
