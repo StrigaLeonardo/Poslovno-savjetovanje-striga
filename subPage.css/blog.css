@@ -187,3 +187,86 @@ main {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 2em;
 }
+
+/* Mobile View Adjustments for Blogger Info */
+@media (max-width: 768px) {
+  .blog-post {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .blog-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Create two equal columns */
+    gap: 1em;
+    width: 100%;
+    margin-bottom: 1em;
+    padding-right: 0;
+    border: none; /* Remove vertical border */
+    align-items: center; /* Vertically align items in the grid */
+    padding-bottom: 0.5em;
+    border-bottom: #496b79 solid 2px;
+    padding-top: 0.5em;
+  }
+
+  .blogger-image-container {
+    grid-column: 1 / 2; /* Place image in the first column */
+    display: flex; /* Use flexbox to help with centering */
+    justify-content: center; /* Center the image horizontally */
+    align-items: center; /* Center the image vertically */
+    height: 100%; /* Ensure it takes the full height of the container */
+    margin-bottom: 0;
+    margin-right: 1em;
+    padding-left: 0.5em;
+  }
+
+  .blogger-image {
+    width: 80px; /* Adjusted size for better fit */
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0;
+  }
+
+  .blogger-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns for labels and info */
+    grid-column-gap: 10px; /* Gap between labels and info */
+    align-items: center;
+    grid-column: 2; /* Place in the second column */
+    justify-self: start; /* Align the blogger details to the start */
+    align-self: center; /* Align the details vertically to the center */
+    margin-right: 1.5em;
+  }
+
+  .blogger-details label {
+    text-align: right;
+    font-weight: bold;
+  }
+
+  .blogger-details p {
+    margin: 0;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .blog-divider {
+    width: 100%;
+    border: none;
+    border-top: 2px solid #5f8aa3; /* Horizontal divider only */
+    margin: 1em 0; /* Adds spacing to visually separate sections */
+  }
+
+  .blog-content {
+    width: 100%;
+  }
+
+  .blog-section-title {
+    font-size: 1.6em; /* Adjust title for smaller screens */
+  }
+
+  .blog-text p {
+    font-size: 1em; /* Adjust paragraph font size */
+  }
+}
