@@ -178,68 +178,12 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   }
 
-  // Shake animation setup
-  shakeWithDelay();
-
-  function shakeWithDelay() {
-    const shakeElement = document.querySelector(".profile-a");
-    if (!shakeElement) return;
-
-    shakeElement.classList.add("shake-top");
-
-    shakeElement.addEventListener(
-      "animationend",
-      () => {
-        shakeElement.classList.remove("shake-top");
-        setTimeout(shakeWithDelay, 5000);
-      },
-      { once: true }
-    );
-  }
-
-  // Service card dropdown description functionality
-  const serviceCards = document.querySelectorAll(".service-card");
-
-  serviceCards.forEach((card) => {
-    const header = card.querySelector(".service-header");
-
-    header.addEventListener("click", function () {
-      serviceCards.forEach((otherCard) => {
-        if (otherCard !== card) {
-          otherCard.classList.remove("open");
-          const otherDescription = otherCard.querySelector(
-            ".service-description"
-          );
-          if (otherDescription) {
-            otherDescription.style.maxHeight = "0";
-            otherDescription.style.opacity = "0";
-            setTimeout(() => {
-              otherDescription.style.display = "none";
-            }, 500);
-          }
-        }
-      });
-
-      // Toggle the clicked card
-      card.classList.toggle("open");
-
-      // Toggle description display
-      const description = card.querySelector(".service-description");
-      if (description) {
-        if (card.classList.contains("open")) {
-          description.style.display = "block";
-          setTimeout(() => {
-            description.style.maxHeight = description.scrollHeight + "px";
-            description.style.opacity = "1";
-          }, 10);
-        } else {
-          description.style.maxHeight = "0";
-          description.style.opacity = "0";
-          setTimeout(() => {
-            description.style.display = "none";
-          }, 500);
-        }
-      }
+  // Add accordion dropdown functionality for service cards
+  document.querySelectorAll(".service-card-link").forEach((link) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const card = this.querySelector(".service-card");
+      card.classList.toggle("expanded");
     });
   });
 });

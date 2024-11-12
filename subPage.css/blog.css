@@ -197,31 +197,31 @@ main {
 
   .blog-info {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Create two equal columns */
+    grid-template-columns: 1fr 1fr;
     gap: 1em;
     width: 100%;
     margin-bottom: 1em;
     padding-right: 0;
-    border: none; /* Remove vertical border */
-    align-items: center; /* Vertically align items in the grid */
+    border: none;
+    align-items: center;
     padding-bottom: 0.5em;
     border-bottom: #496b79 solid 2px;
     padding-top: 0.5em;
   }
 
   .blogger-image-container {
-    grid-column: 1 / 2; /* Place image in the first column */
-    display: flex; /* Use flexbox to help with centering */
-    justify-content: center; /* Center the image horizontally */
-    align-items: center; /* Center the image vertically */
-    height: 100%; /* Ensure it takes the full height of the container */
+    grid-column: 1 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
     margin-bottom: 0;
     margin-right: 1em;
     padding-left: 0.5em;
   }
 
   .blogger-image {
-    width: 80px; /* Adjusted size for better fit */
+    width: 80px;
     height: 80px;
     border-radius: 50%;
     object-fit: cover;
@@ -231,12 +231,12 @@ main {
 
   .blogger-details {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Two columns for labels and info */
-    grid-column-gap: 10px; /* Gap between labels and info */
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10px;
     align-items: center;
-    grid-column: 2; /* Place in the second column */
-    justify-self: start; /* Align the blogger details to the start */
-    align-self: center; /* Align the details vertically to the center */
+    grid-column: 2;
+    justify-self: start;
+    align-self: center;
     margin-right: 1.5em;
   }
 
@@ -254,8 +254,8 @@ main {
   .blog-divider {
     width: 100%;
     border: none;
-    border-top: 2px solid #5f8aa3; /* Horizontal divider only */
-    margin: 1em 0; /* Adds spacing to visually separate sections */
+    border-top: 2px solid #5f8aa3;
+    margin: 1em 0;
   }
 
   .blog-content {
@@ -263,10 +263,10 @@ main {
   }
 
   .blog-section-title {
-    font-size: 1.6em; /* Adjust title for smaller screens */
+    font-size: 1.6em;
   }
 
   .blog-text p {
-    font-size: 1em; /* Adjust paragraph font size */
+    font-size: 1em;
   }
 }

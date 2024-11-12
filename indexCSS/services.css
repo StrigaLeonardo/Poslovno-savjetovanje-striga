@@ -88,99 +88,128 @@
   text-decoration: none;
   color: inherit;
 }
-/* Mobile view adjustments */
+/* Mobile View Adjustments for Services Section */
 @media (max-width: 768px) {
   .services-section {
-    padding: 2em 1em;
+    padding: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: auto;
   }
 
-  .services-title-container {
-    text-align: center;
-    margin-bottom: 1.5em;
+  .services-title {
     margin-top: 0;
-    width: 90%;
-    padding: 0.5em;
   }
 
   .services-cards-container {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 1.5em;
     width: 100%;
-    align-items: center;
+    padding: 0 1em;
+    box-sizing: border-box;
+  }
+
+  .service-card-link {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
   }
 
   .service-card {
-    background-color: #fff;
+    background-color: #ffffff;
     border: 1px solid #ddd;
-    padding: 0.5em;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out, height 0.3s ease-in-out;
+    transition: transform 0.4s ease-in-out, padding 0.4s ease-in-out;
     cursor: pointer;
-    overflow: hidden;
     display: flex;
-    align-items: center;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+    padding: 1em;
     min-height: 60px;
-    width: 350px;
-    max-width: 90%;
-    margin: 0 auto;
+  }
+
+  .service-card.expanded {
+    padding: 1em;
   }
 
   .service-header {
     display: flex;
     align-items: center;
-    text-align: left;
-    white-space: nowrap;
-    font-size: 1em;
-    flex: 1;
+    gap: 0.8em;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2c3e50;
+    overflow: hidden;
+    border-bottom: #5f8aa3 solid 2px;
+    padding-bottom: 0.5em;
+    width: 100%;
   }
 
   .service-image-container {
-    width: auto;
-    margin-right: 1em;
+    flex-shrink: 0;
   }
 
   .service-image {
     width: 50px;
-    height: auto;
+    height: 50px;
     object-fit: cover;
+    margin-right: 0;
   }
 
   .service-title {
-    font-size: 1.2em;
-    color: #2c3e50;
+    font-size: 1em;
+    white-space: nowrap;
+    flex-grow: 1;
   }
 
   .service-description {
+    font-size: 1em;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 0;
     max-height: 0;
-    padding: 0;
-    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
     overflow: hidden;
+    transition: max-height 0.6s ease-in-out, padding 0.5s ease-in-out;
+    padding: 0;
   }
 
-  .service-card.open {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 90%;
-  }
-
-  .service-card.open .service-description {
+  .service-card.expanded .service-description {
     max-height: 500px;
-    padding: 1em;
+    padding: 1em 0;
+  }
+
+  .service-card.expanded .service-description ul {
+    padding-left: 1.5em;
+    margin: 0;
+    list-style-type: disc;
+  }
+
+  .service-card.expanded .service-description li {
+    margin-bottom: 0.5em;
+    padding: 0.3em;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+
+  .toggle-icon {
+    margin-left: auto;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+
+  .service-card.expanded .toggle-icon {
+    transform: rotate(45deg);
+  }
+
+  .services-title-container {
+    margin: 1em 1em;
   }
 
   .services-description {
-    width: 100%;
-    text-align: justify;
     font-size: 1em;
-  }
-
-  .services-title {
-    font-size: 1.6em;
   }
 }
