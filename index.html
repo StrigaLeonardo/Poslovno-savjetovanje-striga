@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="indexCSS/profile-banner.css" />
     <link rel="stylesheet" href="indexCSS/html.css" />
     <link rel="stylesheet" href="indexCSS/services.css" />
-    <link rel="stylesheet" href="indexCSS/about-us-section.css" />
+    <link rel="stylesheet" href="indexCSS/contact-us-section.css" />
+    <link rel="stylesheet" href="subPage.css/blog-archive.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,21 +37,19 @@
           </div>
         </div>
       </div>
+
       <section class="services-section">
-        <div class="services-title-container">
-          <span class="line"></span>
-          <h2 class="services-title roboto-light">Naše Usluge</h2>
-          <span class="line"></span>
-          <p class="services-description roboto-light">
-            Pomažemo malim i srednjim poduzećima da ostvare svoje ciljeve kroz
-            strateško savjetovanje i inovativna rješenja, te im pružamo podršku
-            i resurse za kontinuirani rast i inovacije.
-          </p>
-        </div>
-        <div class="services-content">
+        <div class="services-inner-container">
+          <div class="services-description roboto-light">
+            <h3 class="roboto-light">
+              Pomažemo malim i srednjim poduzećima da ostvare svoje ciljeve kroz
+              strateško savjetovanje i inovativna rješenja, te im pružamo
+              podršku i resurse za kontinuirani rast i inovacije.
+            </h3>
+          </div>
           <div class="services-cards-container">
             <!-- Service Cards -->
-            <a href="#" class="service-card-link">
+            <a href="financijsko.html" class="service-card-link">
               <div class="service-card">
                 <div class="service-header">
                   <div class="service-image-container">
@@ -67,21 +66,7 @@
               </div>
             </a>
 
-            <a href="#" class="service-card-link">
-              <div class="service-card">
-                <div class="service-header">
-                  <div class="service-image-container">
-                    <img class="service-image" src="photos/esg.png" />
-                  </div>
-                  <h3 class="service-title roboto-light">Održivo poslovanje</h3>
-                </div>
-                <p class="service-description">
-                  Savjetovanje za održivost i implementaciju zelenih praksi.
-                </p>
-              </div>
-            </a>
-
-            <a href="#" class="service-card-link">
+            <a href="stratesko.html" class="service-card-link">
               <div class="service-card">
                 <div class="service-header">
                   <div class="service-image-container">
@@ -131,20 +116,24 @@
           <div class="profile-text">
             <h3 class="profile-h3 roboto-light">Tajana Štriga</h3>
             <p class="profile-p roboto-light">
-              Specijalizirana za financijsku analizu i strategije ulaganja, s
-              više od 10 godina iskustva u pružanju detaljnih uvida u tržišta
-              kapitala. Moj cilj je pomoći klijentima u donošenju informiranih
-              financijskih odluka putem analize podataka, tržišnih istraživanja
-              i stručnih preporuka.
+              Kao osnivačica i konzultantica obrta Štriga poslovno savjetovanje,
+              pružam personaliziranu podršku poduzećima koja žele ostvariti
+              rast, optimizirati svoje poslovne procese i postaviti dugoročne
+              strateške prioritete. Moj cilj je osigurati srednje velikim
+              poduzećima jasnu viziju, strukturirani plan i podršku potrebnu za
+              rast, širenje i dugoročni uspjeh.
             </p>
           </div>
         </div>
+        <a class="profile-a roboto-light shake-top" href="about-us.html"
+          >Saznajte više
+        </a>
       </div>
 
-      <section class="about-us-section">
-        <div class="about-us-content">
-          <h2 class="about-us-title roboto-light">Zašto odabrati nas?</h2>
-          <p class="about-us-text roboto-light">
+      <section class="contact-us-section">
+        <div class="contact-us-content">
+          <h2 class="contact-us-title roboto-light">Zašto odabrati nas?</h2>
+          <p class="contact-us-text roboto-light">
             Razumijemo da svaki klijent ima specifične izazove i potrebe – zato
             ne vjerujemo u univerzalna rješenja. Svaki naš pristup temelji se na
             dubinskoj analizi tržišta i kreiranju individualnih rješenja
@@ -157,15 +146,25 @@
           </p>
           <div class="button-container">
             <a href="kontakt.html" class="contact-button roboto-medium"
-              >Kontaktirajte nas</a
+              >Kontaktirajte me</a
             >
           </div>
         </div>
+      </section>
+
+      <section id="latest-blogs">
+        <div class="blog-header">
+          <h2 class="latest-blogs-title roboto-light">
+            Zadnje analize i istraživanja
+          </h2>
+        </div>
+        <div id="latest-blog-container" class="custom-container"></div>
       </section>
     </main>
 
     <footer></footer>
 
     <script src="app.js"></script>
+    <script src="blog.js"></script>
   </body>
 </html>

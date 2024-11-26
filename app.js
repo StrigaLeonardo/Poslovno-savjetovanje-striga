@@ -25,6 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Adjust main padding after header is loaded
       adjustMainPadding();
+
+      // Add dropdown behavior for the USLUGE link
+      setupUslugeDropdown();
     });
 
   // Load the footer
@@ -178,7 +181,43 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   }
 
-  // Add accordion dropdown functionality for service cards
+  // Function to handle USLUGE dropdown link behavior
+  function setupUslugeDropdown() {
+    const uslugeLink = document.querySelector(".dropdown > a");
+    const dropdownContent = document.querySelector(".dropdown-content");
+
+    let clickTimer = null;
+
+    // Add a click event to the USLUGE link
+    uslugeLink.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      if (
+        dropdownContent.style.maxHeight &&
+        dropdownContent.style.maxHeight !== "0px"
+      ) {
+        dropdownContent.style.maxHeight = "0";
+        dropdownContent.style.opacity = "0";
+      } else {
+        dropdownContent.style.maxHeight = "600px";
+        dropdownContent.style.opacity = "1";
+      }
+
+      if (clickTimer) {
+        clearTimeout(clickTimer);
+        clickTimer = null;
+      }
+
+      clickTimer = setTimeout(() => {
+        clickTimer = null;
+      }, 300);
+    });
+
+    uslugeLink.addEventListener("dblclick", function () {
+      window.location.href = "usluge.html";
+    });
+  }
+
   document.querySelectorAll(".service-card-link").forEach((link) => {
     link.addEventListener("click", function (e) {
       e.preventDefault();

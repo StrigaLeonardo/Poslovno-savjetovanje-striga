@@ -10,3 +10,9 @@ html {
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
 }
+
+:root {
+  --primary-color: #5f8aa3;
+  --secondary-color: #496b79;
+  --off-white: #f9f9f9;
+}

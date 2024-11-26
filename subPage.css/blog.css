@@ -184,7 +184,7 @@ main {
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.455);
   margin-bottom: 2em;
 }
 
@@ -225,7 +225,7 @@ main {
     height: 80px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.455);
     margin-bottom: 0;
   }
 

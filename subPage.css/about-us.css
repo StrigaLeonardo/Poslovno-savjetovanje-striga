@@ -1,0 +1,176 @@
+.why-us {
+  padding: 1em;
+}
+
+.why-us-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.why-us-title {
+  font-size: 2em;
+  margin-left: 1em;
+}
+
+.why-us-content {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2em;
+  justify-content: center;
+}
+
+.why-us-item {
+  font-size: 1.2em;
+  color: #333;
+  max-width: 350px;
+  text-align: justify;
+  margin: 1.5em;
+}
+
+.why-us-item-title {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.why-us-item-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.about-me-wrapper {
+  display: flex;
+  max-width: 1200px;
+  margin: 5em auto;
+  gap: 2em;
+}
+
+.about-me-content {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.about-me-container,
+.my-story-container {
+  padding: 1em;
+}
+
+.about-me-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-me-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.about-me-title,
+.my-story-title {
+  font-size: 2.3em;
+  margin-bottom: 0.5em;
+  margin-top: 0;
+}
+
+.about-me-text,
+.my-story-text {
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: #333;
+}
+
+.work-process {
+  background-color: var(--off-white);
+  padding: 1em 1em;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container {
+  position: relative;
+  width: 50%;
+}
+
+.textbox {
+  padding: 0em 1em;
+  /* background-color: var(--off-white);*/
+  position: relative;
+  border-radius: 6px;
+  margin: 1em;
+}
+
+.left-container {
+  left: 0;
+}
+
+.right-container {
+  left: 50%;
+}
+
+.container svg {
+  position: absolute;
+  right: -20px;
+  top: 0;
+  z-index: 5;
+}
+
+.left-container svg {
+  right: -50px;
+}
+
+.right-container svg {
+  left: -53px;
+}
+
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 100%;
+  background-color: var(--primary-color);
+  top: 0;
+  left: 50%;
+  margin-left: -3px;
+  z-index: 5;
+}
+
+.work-process-title {
+  font-size: 2em;
+  text-align: center;
+  border-bottom: 2px solid var(--primary-color);
+  margin-bottom: 0.5em;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.work-process-title h3 {
+  margin: 0.5em;
+}
+
+.work-process-subtitle {
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.work-process-heading {
+  margin-bottom: 5em;
+}
+
+.textbox p {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.textbox h2 {
+  font-size: 1.7em;
+}

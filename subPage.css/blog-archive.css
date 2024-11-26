@@ -128,9 +128,9 @@
   text-align: left;
 }
 
-.blog-header h1 {
-  border-bottom: 2px solid #5f8aa3;
-  padding-bottom: 0.2em;
+.blog-header h2 {
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5em;
 }
 
 .pagination {
@@ -149,7 +149,7 @@
 }
 
 .page-number.selected {
-  color: #496b79;
+  color: var(--primary-color);
 }
 .card-link {
   text-decoration: none;
@@ -161,6 +161,12 @@
 
 .card-link:hover {
   color: inherit;
+}
+
+.latest-blogs-title {
+  font-size: 2em;
+  line-height: 1.2;
+  margin-bottom: 1em;
 }
 
 /* Mobile view adjustments */
@@ -206,5 +212,73 @@
 
   .blog-header h1 {
     font-size: 1.5em;
+  }
+}
+
+.pagination-container {
+  margin: 50px auto;
+  text-align: center;
+}
+
+.pagination {
+  position: relative;
+}
+
+.pagination a {
+  position: relative;
+  display: inline-block;
+  color: #496b79;
+  text-decoration: none;
+  font-size: 1em;
+  padding: 8px 16px 10px;
+  transition: color 0.2s ease-in-out;
+}
+
+.pagination a:before {
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  content: "";
+  top: 0;
+  left: 0;
+  background-color: #496b79;
+  border-radius: 24px;
+  transform: scale(0);
+  transition: all 0.2s ease-in-out;
+}
+
+.pagination a:hover:before,
+.pagination a.pagination-active:before {
+  transform: scale(1);
+}
+
+.pagination a:hover,
+.pagination a.pagination-active {
+  color: #ffffff;
+}
+
+.pagination-newer {
+  margin-right: 50px;
+}
+
+.pagination-older {
+  margin-left: 50px;
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+  .pagination-container {
+    margin: 30px auto;
+  }
+
+  .pagination a {
+    font-size: 1rem;
+    padding: 6px 12px;
+  }
+
+  .pagination-newer,
+  .pagination-older {
+    margin: 0 15px;
   }
 }

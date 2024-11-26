@@ -1,0 +1,105 @@
+.contact-us-section {
+  padding: 2em;
+  background-color: #f9f9f9;
+  margin: 2em auto;
+  border-radius: 10px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.contact-us-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+.contact-us-title {
+  font-size: 2em;
+  margin-bottom: 1em;
+  margin-top: 0;
+}
+
+.contact-us-text {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.contact-button {
+  display: inline-block;
+  margin-top: 1.5em;
+  padding: 0.75em 1.5em;
+  background-color: #5f8aa3;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.contact-button:hover {
+  background-color: #3e5b66;
+}
+
+/* About Us Section for Mobile View */
+@media (max-width: 768px) {
+  .contact-us-section {
+    padding: 1.5em;
+  }
+
+  .contact-us-content {
+    max-width: 100%;
+    margin: 0 1em;
+    display: block;
+  }
+
+  .contact-us-title {
+    font-size: 1.6em;
+    display: block;
+  }
+
+  .contact-us-text {
+    font-size: 1em;
+    display: block;
+  }
+
+  .contact-button {
+    font-size: 0.9em;
+    padding: 0.6em 1.2em;
+    display: inline-block;
+  }
+}
+
+/* Introduction Section */
+.intro-section {
+  background-color: #ffffff;
+  padding: 3em 1.5em;
+  margin: 2em auto;
+  max-width: 1200px;
+  border-left: 5px solid #5f8aa3;
+}
+
+.intro-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.intro-text {
+  font-size: 1.3em;
+  color: #333;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* Mobile View Adjustments for Introduction Section */
+@media (max-width: 768px) {
+  .intro-section {
+    padding: 2em 1em;
+  }
+
+  .intro-content {
+    max-width: 100%;
+  }
+
+  .intro-text {
+    font-size: 1.1em;
+  }
+}
