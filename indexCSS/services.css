@@ -139,6 +139,8 @@
   font-size: 1em;
   color: #666;
   text-align: justify;
+  margin-top: 0.5;
+  margin-bottom: 0;
 }
 
 .service-card-link {

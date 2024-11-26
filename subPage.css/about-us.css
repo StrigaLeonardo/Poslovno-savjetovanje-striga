@@ -120,7 +120,7 @@
 .container svg {
   position: absolute;
   right: -20px;
-  top: 0;
+  top: 20px;
   z-index: 5;
 }
 
@@ -154,12 +154,13 @@
 }
 
 .work-process-title h3 {
-  margin: 0.5em;
+  margin: 0.2em;
 }
 
-.work-process-subtitle {
+.work-process-subtitle p {
   font-size: 1.2em;
   text-align: center;
+  margin: 0.5em;
 }
 
 .work-process-heading {
@@ -173,4 +174,8 @@
 
 .textbox h2 {
   font-size: 1.7em;
+}
+
+#right-align {
+  text-align: right;
 }
