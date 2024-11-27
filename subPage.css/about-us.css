@@ -43,14 +43,15 @@
   display: flex;
   max-width: 1200px;
   margin: 5em auto;
-  gap: 2em;
+  gap: 1em;
+  flex-wrap: wrap;
 }
 
 .about-me-content {
   flex: 2;
   display: flex;
   flex-direction: column;
-  gap: 2em;
+  gap: 1em;
 }
 
 .about-me-container,
@@ -60,15 +61,32 @@
 
 .about-me-image {
   flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  display: inline-block;
+  width: 300px;
+  margin: 0 auto;
+  transform: translateX(5%);
 }
 
-.about-me-image img {
-  max-width: 100%;
+.splatter-image {
+  position: absolute;
+  top: 49%;
+  left: 45%;
+  transform: translate(-55%, -48%) rotate(266deg);
+  z-index: 1;
+  width: 200%;
+  max-width: 600px;
   height: auto;
-  border-radius: 8px;
+  opacity: 0.8;
+}
+
+.about-me-image img[alt="Tajana"] {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  display: block;
 }
 
 .about-me-title,
@@ -83,17 +101,26 @@
   font-size: 1.2em;
   line-height: 1.6;
   color: #333;
+  margin-bottom: 0;
+  text-align: justify;
+}
+
+.my-story-container {
+  flex: 2;
+  text-align: justify;
 }
 
 .work-process {
   background-color: var(--off-white);
-  padding: 1em 1em;
+  padding: 0em 2em;
+  padding-bottom: 3em;
 }
 
 .timeline {
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 1em;
 }
 
 .container {
@@ -103,10 +130,11 @@
 
 .textbox {
   padding: 0em 1em;
-  /* background-color: var(--off-white);*/
   position: relative;
   border-radius: 6px;
   margin: 1em;
+  margin-left: 2em;
+  margin-right: 2em;
 }
 
 .left-container {
@@ -120,16 +148,17 @@
 .container svg {
   position: absolute;
   right: -20px;
-  top: 20px;
+  top: -7px;
   z-index: 5;
+  margin: 0;
 }
 
 .left-container svg {
-  right: -50px;
+  right: 3px;
 }
 
 .right-container svg {
-  left: -53px;
+  left: 0px;
 }
 
 .timeline::after {
@@ -142,29 +171,31 @@
   left: 50%;
   margin-left: -3px;
   z-index: 5;
+  padding: 1em 0;
 }
 
 .work-process-title {
-  font-size: 2em;
-  text-align: center;
-  border-bottom: 2px solid var(--primary-color);
-  margin-bottom: 0.5em;
-  width: 50%;
-  margin: 0 auto;
+  margin: 0;
+  margin-top: 1em;
+  font-size: 2.3em;
+  margin-left: 0.5em;
 }
 
-.work-process-title h3 {
-  margin: 0.2em;
-}
-
-.work-process-subtitle p {
+.work-process-subtitle {
   font-size: 1.2em;
-  text-align: center;
-  margin: 0.5em;
+  margin-left: 1em;
+  margin-top: 0.2em;
+  padding-top: 0.2em;
+  color: #333;
+  border-top: 2px solid var(--primary-color);
+  width: 65%;
 }
 
 .work-process-heading {
-  margin-bottom: 5em;
+  margin-bottom: 3em;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1em;
 }
 
 .textbox p {

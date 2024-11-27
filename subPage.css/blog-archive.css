@@ -169,6 +169,10 @@
   margin-bottom: 1em;
 }
 
+#latest-blog-container {
+  margin-bottom: 3em;
+}
+
 /* Mobile view adjustments */
 @media (max-width: 768px) {
   .custom-container {
