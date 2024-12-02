@@ -136,6 +136,26 @@
           </div>
         </div>
       </section>
+
+      <!-- Login Modal -->
+      <div id="login-modal" class="modal">
+        <div class="modal-content">
+          <h2>Login</h2>
+          <form id="login-form">
+            <input type="email" id="email" placeholder="Email" required />
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              required
+            />
+            <button type="submit">Login</button>
+          </form>
+          <p id="error-message" class="error-message"></p>
+        </div>
+      </div>
+
+      <button id="logout-button">Logout</button>
     </main>
 
     <footer></footer>
@@ -144,5 +164,6 @@
     <script src="app.js"></script>
     <script type="module" src="blog.js"></script>
     <script type="module" src="dashboard.js"></script>
+    <script type="module" src="dash-login.js"></script>
   </body>
 </html>
