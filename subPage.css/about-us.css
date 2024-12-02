@@ -72,7 +72,7 @@
   position: absolute;
   top: 49%;
   left: 45%;
-  transform: translate(-55%, -48%) rotate(266deg);
+  transform: translate(-55%, -50%) rotate(266deg);
   z-index: 1;
   width: 200%;
   max-width: 600px;
@@ -87,6 +87,7 @@
   max-width: 300px;
   height: auto;
   display: block;
+  transform: rotate(-2deg);
 }
 
 .about-me-title,

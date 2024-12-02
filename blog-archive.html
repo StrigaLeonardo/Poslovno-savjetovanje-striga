@@ -26,6 +26,11 @@
     <header></header>
 
     <main>
+      <!-- Preloader -->
+      <div id="preloader">
+        <div class="loader"></div>
+      </div>
+
       <div class="blog-header">
         <h2 class="blog-section-title roboto-light">
           Sve o svemu na jednome mjestu
@@ -35,12 +40,15 @@
         <div class="custom-container" id="card-container"></div>
       </div>
       <div id="card-container"></div>
-      <div id="pagination-container" class="pagination-container"></div>
+      <div
+        id="pagination-container"
+        class="pagination-container roboto-light"
+      ></div>
     </main>
 
     <footer></footer>
 
     <script src="app.js"></script>
-    <script src="blog.js"></script>
+    <script type="module" src="blog.js"></script>
   </body>
 </html>

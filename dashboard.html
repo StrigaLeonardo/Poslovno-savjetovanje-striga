@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <title>Štriga poslovno savjetovanje</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Leonardo Štriga" />
+    <link rel="stylesheet" href="indexCSS/page-header.css" />
+    <link rel="stylesheet" href="indexCSS/font.css" />
+    <link rel="stylesheet" href="indexCSS/page-footer.css" />
+    <link rel="stylesheet" href="indexCSS/html.css" />
+    <link rel="stylesheet" href="subPage.css/dashboard.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="subPage.css/blog-archive.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="subPage.css/blog.css" />
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+
+    <!-- CKEditor -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+
+    <!-- DOMPurify -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@2.4.0/dist/purify.min.js"></script>
+  </head>
+
+  <body>
+    <header></header>
+
+    <main>
+      <section class="dashboard-wrapper">
+        <!-- Dashboard Form -->
+        <div class="dashboard-form-wrapper">
+          <form id="blog-post-form" class="dashboard-form">
+            <h2 class="dashboard-title roboto-light">Novi blog</h2>
+            <p class="dashboard-subtitle roboto-light">
+              Ispuni podatke za novi blog.
+            </p>
+
+            <div class="form-group roboto-light">
+              <label for="title">Title<span class="required">*</span>:</label>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                required
+                placeholder="Enter blog title"
+              />
+            </div>
+
+            <div class="form-group roboto-light">
+              <label for="description"
+                >Description<span class="required">*</span>:</label
+              >
+              <textarea
+                id="description"
+                name="description"
+                rows="3"
+                required
+                placeholder="Enter blog description"
+              ></textarea>
+            </div>
+
+            <div class="form-group roboto-light">
+              <label for="date">Date<span class="required">*</span>:</label>
+              <input type="date" id="date" name="date" required />
+            </div>
+
+            <div class="form-group roboto-light">
+              <label for="image">Image<span class="required">*</span>:</label>
+              <input
+                type="file"
+                id="image"
+                name="image"
+                accept="image/*"
+                required
+              />
+            </div>
+
+            <div class="form-group roboto-light">
+              <label for="content"
+                >Content<span class="required">*</span>:</label
+              >
+              <div id="editor"></div>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="send-button">
+                Publish Blog Post
+              </button>
+            </div>
+
+            <div id="submission-error" class="roboto-light">
+              There was an error submitting your blog post. Please try again.
+            </div>
+          </form>
+        </div>
+
+        <!-- Blog Preview -->
+        <div class="blog-preview-wrapper">
+          <h2 class="roboto-light">Live Preview</h2>
+          <div class="blog-preview">
+            <a class="card-link">
+              <div class="custom-post">
+                <div class="custom-header-post">
+                  <img
+                    id="preview-image"
+                    src="placeholder.jpg"
+                    alt="Preview Image"
+                  />
+                </div>
+                <div class="custom-body-post">
+                  <div class="custom-post-content">
+                    <h1 id="preview-title" class="roboto-light">Blog Title</h1>
+                    <p id="preview-description" class="roboto-light">
+                      Blog description will appear here.
+                    </p>
+                    <div class="custom-container-infos">
+                      <div class="custom-posted-by">
+                        <span>Datum:</span>
+                        <span id="preview-date">No date selected</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer></footer>
+
+    <!-- JavaScript Files -->
+    <script src="app.js"></script>
+    <script type="module" src="blog.js"></script>
+    <script type="module" src="dashboard.js"></script>
+  </body>
+</html>

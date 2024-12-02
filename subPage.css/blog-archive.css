@@ -136,21 +136,54 @@
 .pagination {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin: 2em 0;
+  gap: 1em;
+  font-family: "Roboto", sans-serif;
+}
+
+.pagination a {
+  text-decoration: none;
+  color: #2c3e50;
+  padding: 0.8em 1.5em;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: 2px solid #5f8aa3;
+  font-size: 1em;
+}
+
+.pagination a:hover {
+  background-color: #5f8aa3;
+  color: #ffffff;
+}
+
+.pagination-active {
+  background-color: #5f8aa3;
+  color: #ffffff;
+  border: 2px solid #5f8aa3;
+}
+
+.pagination-newer,
+.pagination-older {
+  padding: 0.8em 1.2em;
+}
+
+.pagination-newer:hover,
+.pagination-older:hover {
+  background-color: #405944;
+  color: #ffffff;
 }
 
 .page-number {
-  margin: 0 3px;
-  padding: 5px 10px;
+  padding: 0.5em 1em;
   cursor: pointer;
-  position: relative;
-  color: black;
-  transition: color 0.3s;
+  transition: all 0.3s ease;
 }
 
-.page-number.selected {
-  color: var(--primary-color);
+.page-number:hover {
+  background-color: #e8eaed;
+  color: #2c3e50;
 }
+
 .card-link {
   text-decoration: none;
   color: inherit;
@@ -162,7 +195,6 @@
 .card-link:hover {
   color: inherit;
 }
-
 .latest-blogs-title {
   font-size: 2em;
   line-height: 1.2;
@@ -171,6 +203,49 @@
 
 #latest-blog-container {
   margin-bottom: 3em;
+}
+
+/* Preloader styles */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  margin: 0;
+  padding: 0;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader {
+  border: 12px solid #f3f3f3;
+  border-top: 12px solid var(--primary-color);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  animation: spin 1.5s linear infinite;
+}
+
+/* Keyframes for the spinner */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Mobile view adjustments */
