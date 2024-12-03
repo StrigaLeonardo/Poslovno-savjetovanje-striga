@@ -180,6 +180,45 @@
   display: none;
 }
 
+.button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+}
+
+#logout-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#logout-button:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+#logout-button:active {
+  background-color: var(--secondary-color);
+  transform: scale(1);
+}
+
+#dashboard-content,
+#logout-button {
+  display: none;
+}
+
+#login-modal {
+  display: flex; /* Make sure the login modal is visible by default */
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .dashboard-wrapper {

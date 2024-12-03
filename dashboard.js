@@ -1,10 +1,3 @@
-// dashboard.js
-
-import { firebaseConfig } from "./firebaseConfig.js";
-import {
-  initializeApp,
-  getApps,
-} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
 import {
   getAuth,
   signOut,
@@ -12,12 +5,12 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 import {
   getFirestore,
-  collection,
-  addDoc,
-  serverTimestamp,
-  Timestamp,
   doc,
   getDoc,
+  addDoc,
+  collection,
+  serverTimestamp,
+  Timestamp,
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 import {
   getStorage,
@@ -25,65 +18,74 @@ import {
   uploadBytes,
   getDownloadURL,
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-storage.js";
+import app from "./firebaseInit.js";
 
-document.addEventListener("DOMContentLoaded", async () => {
-  // Initialize Firebase
-  let app;
-  if (!getApps().length) {
-    app = initializeApp(firebaseConfig);
-  } else {
-    app = getApps()[0];
-  }
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
 
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-  const storage = getStorage(app);
-
-  // DOM Elements
+document.addEventListener("DOMContentLoaded", () => {
   const loginModal = document.getElementById("login-modal");
   const dashboardContent = document.getElementById("dashboard-content");
+  const blogPreviewWrapper = document.querySelector(".blog-preview-wrapper");
   const logoutButton = document.getElementById("logout-button");
 
-  // Show Login Modal by Default
+  // Ensure the dashboard, blog preview, and logout button are hidden by default
   loginModal.style.display = "flex";
+  dashboardContent.style.display = "none";
+  blogPreviewWrapper.style.display = "none";
+  logoutButton.style.display = "none";
 
-  // Auth State Observer
   onAuthStateChanged(auth, async (user) => {
     if (user) {
       try {
         const userDocRef = doc(db, "users", user.uid);
         const userDoc = await getDoc(userDocRef);
 
+        console.log("User document data:", userDoc.data()); // Debug log
+
         if (userDoc.exists() && userDoc.data().isAdmin) {
           loginModal.style.display = "none";
           dashboardContent.style.display = "block";
-          initializeDashboard(); // Initialize dashboard functions
+          blogPreviewWrapper.style.display = "block";
+          logoutButton.style.display = "block";
+          initializeDashboard();
         } else {
-          throw new Error("Unauthorized access.");
+          throw new Error("Unauthorized access: User is not an admin.");
         }
       } catch (error) {
         console.error("Authorization error:", error.message);
+        alert("Unauthorized access. Please contact an administrator.");
         await signOut(auth);
         loginModal.style.display = "flex";
         dashboardContent.style.display = "none";
+        blogPreviewWrapper.style.display = "none";
+        logoutButton.style.display = "none";
       }
     } else {
       loginModal.style.display = "flex";
       dashboardContent.style.display = "none";
+      blogPreviewWrapper.style.display = "none";
+      logoutButton.style.display = "none";
     }
   });
 
-  // Logout Handler
-  logoutButton.addEventListener("click", async () => {
-    try {
-      await signOut(auth);
-      loginModal.style.display = "flex";
-      dashboardContent.style.display = "none";
-      console.log("Logged out.");
-    } catch (error) {
-      console.error("Logout failed:", error.message);
-    }
-  });
+  // Add logout functionality
+  if (logoutButton) {
+    logoutButton.addEventListener("click", async () => {
+      try {
+        await signOut(auth);
+        alert("You have been logged out successfully.");
+        loginModal.style.display = "flex";
+        dashboardContent.style.display = "none";
+        blogPreviewWrapper.style.display = "none";
+        logoutButton.style.display = "none";
+      } catch (error) {
+        console.error("Logout failed:", error);
+        alert("An error occurred while logging out. Please try again.");
+      }
+    });
+  }
 
   // Initialize Dashboard Functions
   function initializeDashboard() {

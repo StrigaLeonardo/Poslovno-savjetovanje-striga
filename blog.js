@@ -1,5 +1,5 @@
-// Import Firebase functions
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+// Import Firebase modules and initialized app
+import app from "./firebaseInit.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js";
 import {
   getFirestore,
@@ -16,19 +16,6 @@ import {
   getDownloadURL,
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-storage.js";
 
-// Your web app's Firebase configuration (Replace with your actual config)
-const firebaseConfig = {
-  apiKey: "YOUR_ACTUAL_API_KEY", // Replace with your actual API key
-  authDomain: "striga-poslovno-savjetovanje.firebaseapp.com",
-  projectId: "striga-poslovno-savjetovanje",
-  storageBucket: "striga-poslovno-savjetovanje.firebasestorage.app",
-  messagingSenderId: "484239240396",
-  appId: "1:484239240396:web:d18c9d1005fa3e66efe669",
-  measurementId: "G-MB5LJKQK07",
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
@@ -37,7 +24,7 @@ const cardsPerPage = 9;
 let currentPage = 1;
 let blogs = [];
 
-// Store the last visited page in localStorage (optional)
+// Store the last visited page in localStorage
 const storedPage = localStorage.getItem("currentPage");
 if (storedPage) {
   currentPage = parseInt(storedPage);
