@@ -216,7 +216,7 @@
 }
 
 #login-modal {
-  display: flex; /* Make sure the login modal is visible by default */
+  display: flex;
 }
 
 /* Responsive Design */
