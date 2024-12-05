@@ -7,8 +7,8 @@
   margin: 0 auto;
 }
 
-.why-us-title {
-  font-size: 2em;
+.why-us-title h2 {
+  font-size: 2.5em;
   margin-left: 1em;
 }
 
@@ -42,7 +42,7 @@
 .about-me-wrapper {
   display: flex;
   max-width: 1200px;
-  margin: 5em auto;
+  margin: 3em auto;
   gap: 1em;
   flex-wrap: wrap;
 }
@@ -210,4 +210,40 @@
 
 #right-align {
   text-align: right;
+}
+
+@media (max-width: 768px) {
+  .why-us-content {
+    flex-direction: column;
+  }
+
+  .why-us-title h2 {
+    font-size: 2em;
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .why-us-item-title {
+    font-size: 1.2em;
+  }
+
+  .why-us-item {
+    font-size: 1em;
+  }
+
+  .about-me-text {
+    font-size: 1em;
+  }
+
+  .about-me-title {
+    font-size: 2em;
+  }
+
+  .my-story-text {
+    font-size: 1em;
+  }
+
+  .my-story-title {
+    font-size: 2em;
+  }
 }

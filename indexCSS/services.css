@@ -48,7 +48,7 @@
 }
 
 .services-section {
-  padding-top: 3em;
+  padding-top: 2em;
   padding-bottom: 3em;
   background-color: #f9f9f9;
   width: 100%;
@@ -57,14 +57,13 @@
 
 .services-inner-container {
   max-width: 1200px;
-  margin: 0 auto;
   padding: 0 1em;
   display: flex;
   flex-direction: column;
   gap: 1em;
-  align-items: flex-start;
   position: relative;
   z-index: 1;
+  margin: 0 auto;
 }
 
 .services-title-holder {
@@ -112,7 +111,7 @@
   transition: transform 0.3s;
   max-width: 330px;
   min-width: 330px;
-  min-height: 240px;
+  min-height: 320px;
 }
 
 .service-card:hover {
@@ -122,18 +121,18 @@
 .service-header {
   display: flex;
   align-items: center;
-  margin-bottom: 0.5em;
+  flex-direction: column;
 }
 
 .service-image {
-  width: 50px;
+  width: 60px;
+  height: 60px;
   height: auto;
-  margin-right: 1em;
 }
 
 .service-title {
   font-size: 1.5em;
-  margin: 0;
+  margin-bottom: 0.5em;
 }
 
 .service-description {
@@ -142,7 +141,7 @@
   text-align: left;
   margin-top: 0.6em;
   margin-bottom: 0;
-  margin-left: 0.6em;
+  margin-left: 0.5em;
 }
 
 .service-description p {
@@ -162,16 +161,37 @@
   font-size: 1.2em;
 }
 
+.services-description {
+  width: 70%;
+  margin-top: 0;
+  color: #333;
+  border-top: 2px solid var(--primary-color);
+}
+
+.services-header-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2em;
+}
+
+.services-header-title h2 {
+  font-size: 2.5em;
+  white-space: nowrap;
+  margin-bottom: 0em;
+  padding-bottom: 0.2em;
+}
+
 /* Mobile View Adjustments for Services Section */
 @media (max-width: 768px) {
   .services-section {
-    padding: 1em;
+    margin: 0 auto;
   }
 
   .services-inner-container {
     grid-template-columns: 1fr;
     max-width: 100%;
     padding: 0 1em;
+    margin: 0 auto;
   }
 
   .services-title-holder-container {
@@ -191,5 +211,23 @@
 
   .service-card {
     max-width: 100%;
+    min-width: 0;
+    padding: 1em 1em;
+  }
+
+  .services-header-title {
+    font-size: 0.6em;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .services-description {
+    width: 90%;
+    margin: 0 auto;
+    text-align: justify;
+  }
+
+  .services-header-wrapper {
+    margin-left: 0;
   }
 }

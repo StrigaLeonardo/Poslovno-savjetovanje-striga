@@ -205,13 +205,14 @@
     grid-template-columns: 1fr 1fr;
     gap: 1em;
     width: 100%;
-    margin-bottom: 1em;
+    margin-bottom: 0.1em;
     padding-right: 0;
     border: none;
     align-items: center;
     padding-bottom: 0.5em;
     border-bottom: #496b79 solid 2px;
     padding-top: 0.5em;
+    padding-bottom: 1em;
   }
 
   .blogger-image-container {
@@ -268,10 +269,18 @@
   }
 
   .blog-section-title {
-    font-size: 1.6em;
+    font-size: 1.5em;
   }
 
   .blog-text p {
     font-size: 1em;
+  }
+
+  .blog-text img {
+    width: 100%;
+  }
+
+  .blog-text strong {
+    line-height: normal;
   }
 }

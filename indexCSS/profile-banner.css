@@ -71,78 +71,6 @@
   color: var(--primary-color);
 }
 
-.shake-top {
-  -webkit-animation: shake-top 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
-  animation: shake-top 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
-}
-
-@-webkit-keyframes shake-top {
-  0%,
-  100% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-    -webkit-transform-origin: 50% 0;
-    transform-origin: 50% 0;
-  }
-  10% {
-    -webkit-transform: rotate(2deg);
-    transform: rotate(2deg);
-  }
-  20%,
-  40%,
-  60% {
-    -webkit-transform: rotate(-4deg);
-    transform: rotate(-4deg);
-  }
-  30%,
-  50%,
-  70% {
-    -webkit-transform: rotate(4deg);
-    transform: rotate(4deg);
-  }
-  80% {
-    -webkit-transform: rotate(-2deg);
-    transform: rotate(-2deg);
-  }
-  90% {
-    -webkit-transform: rotate(2deg);
-    transform: rotate(2deg);
-  }
-}
-@keyframes shake-top {
-  0%,
-  100% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-    -webkit-transform-origin: 50% 0;
-    transform-origin: 50% 0;
-  }
-  10% {
-    -webkit-transform: rotate(2deg);
-    transform: rotate(2deg);
-  }
-  20%,
-  40%,
-  60% {
-    -webkit-transform: rotate(-4deg);
-    transform: rotate(-4deg);
-  }
-  30%,
-  50%,
-  70% {
-    -webkit-transform: rotate(4deg);
-    transform: rotate(4deg);
-  }
-  80% {
-    -webkit-transform: rotate(-2deg);
-    transform: rotate(-2deg);
-  }
-  90% {
-    -webkit-transform: rotate(2deg);
-    transform: rotate(2deg);
-  }
-}
-
 /* Animation for sliding in from the left */
 @keyframes slide-in-left {
   0% {
@@ -227,10 +155,10 @@
 
   .profile-a {
     position: relative;
-    bottom: auto;
-    right: auto;
+    margin-left: 20.5em;
     font-size: 0.9em;
-    margin-top: 1em;
-    text-align: center;
+    white-space: nowrap;
+    text-align: right;
+    display: block;
   }
 }

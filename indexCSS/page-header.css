@@ -170,11 +170,11 @@
     display: flex;
     position: fixed;
     top: 60px;
-    left: 50%;
+    left: 90%;
     transform: translateX(-50%);
     background-color: #ffffff;
     border: 1px solid #dcdcdc;
-    border-radius: 8px;
+    border-radius: 0px 8px;
     width: 100%;
     max-width: 90%;
     flex-direction: column;
@@ -186,6 +186,7 @@
     overflow: hidden;
     opacity: 0;
     transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    max-width: 70%;
   }
 
   .page-navigation.show {
@@ -233,7 +234,7 @@
 
   .page-navigation a {
     font-size: 1em;
-    text-align: center;
+    text-align: left;
     color: #2c3e50;
     text-decoration: none;
     padding: 0.5em 0;
@@ -245,7 +246,7 @@
     text-align: center;
     margin: 0;
     display: inline-flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     padding: 0.5em 1em;
     width: 100%;
@@ -296,6 +297,7 @@
 
   .dropdown a svg {
     transition: transform 0.3s ease;
+    fill: #333;
   }
 
   .dropdown:hover a svg {
