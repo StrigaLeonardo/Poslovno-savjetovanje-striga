@@ -210,9 +210,11 @@
   }
 
   .service-card {
-    max-width: 100%;
+    max-width: 90%;
     min-width: 0;
-    padding: 1em 1em;
+    padding: 1em 0em;
+    min-height: 270px;
+    margin: 0 auto;
   }
 
   .services-header-title {
@@ -229,5 +231,14 @@
 
   .services-header-wrapper {
     margin-left: 0;
+  }
+
+  .service-description {
+    font-size: 1em;
+    margin-left: 1em;
+  }
+
+  .service-title {
+    color: #333;
   }
 }

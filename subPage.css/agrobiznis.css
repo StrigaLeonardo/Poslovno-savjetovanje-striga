@@ -198,13 +198,94 @@
 }
 
 @media (max-width: 768px) {
-  .services-container {
-    grid-template-columns: repeat(2, 1fr);
+  /* Wrapper Adjustments */
+  .agrobiznis-wrapper {
+    margin: 2em 1em;
+    box-shadow: none;
+    border-radius: 0;
   }
-}
 
-@media (max-width: 480px) {
+  .content-wrapper {
+    flex-direction: column; /* Stack content */
+  }
+
+  .agrobiznis-content {
+    padding: 1.5em;
+  }
+
+  .agrobiznis-image-container {
+    display: none; /* Hide image for simplicity */
+  }
+
+  .agrobiznis-title {
+    font-size: 1.8em;
+    text-align: center;
+  }
+
+  .agrobiznis-text {
+    font-size: 1em;
+    text-align: justify;
+  }
+
+  /* Services Section */
+  .services-section-wrapper {
+    padding: 1em;
+  }
+
+  .services-title-main {
+    font-size: 2em;
+  }
+
   .services-container {
     grid-template-columns: 1fr;
+    gap: 1em;
+  }
+
+  .service-card-service-page {
+    margin: 1em auto;
+    max-width: 90%;
+    width: 100%;
+    padding: 1em;
+  }
+
+  .service-header-service-page {
+    text-align: center;
+  }
+
+  .service-icon {
+    margin: 0 auto 1em;
+  }
+
+  /* Development Strategy Section */
+  .development-strategy-section {
+    padding: 1em;
+  }
+
+  .development-strategy-title {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+  }
+
+  .development-strategy-container {
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .development-card {
+    margin: 1em auto;
+    width: 100%;
+    padding: 1em;
+  }
+
+  .development-icon {
+    margin: 0 auto 1em;
+  }
+
+  .services-section-service-page {
+    margin: 0 auto;
+  }
+
+  .development-strategy-text {
+    font-size: 1em;
   }
 }
