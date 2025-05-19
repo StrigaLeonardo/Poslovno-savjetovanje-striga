@@ -8,8 +8,8 @@
 }
 
 .why-us-title h2 {
-  font-size: 2.5em;
-  margin-left: 1em;
+  font-size: var(--title-font);
+  text-align: center;
 }
 
 .why-us-content {
@@ -20,7 +20,7 @@
 }
 
 .why-us-item {
-  font-size: 1.2em;
+  font-size: var(--text-font);
   color: #333;
   max-width: 350px;
   text-align: justify;
@@ -114,7 +114,8 @@
 
 .work-process {
   background-color: var(--off-white);
-  padding: 0em 2em 3em 2em;
+  padding: 0em 2em 8em 3em;
+  height: fit-content;
 }
 
 .work-process-heading {
@@ -132,13 +133,14 @@
 }
 
 .work-process-subtitle {
-  font-size: 1.2em;
+  font-size: var(--text-font);
   margin-left: 1em;
   margin-top: 0.2em;
   padding-top: 0.2em;
   color: #333;
   border-top: 2px solid var(--primary-color);
   width: 65%;
+  margin-bottom: 5em;
 }
 
 /* Timeline styles */
@@ -207,23 +209,29 @@
 
 .textbox h2 {
   color: black;
+  font-size: 1.7em;
+}
+
+.textbox p {
+  font-size: var(--text-font);
 }
 
 /* Default: text below the icon */
 .timeline-step .textbox {
   position: absolute;
-  left: 50%;
+  left: 60%;
   top: calc(50% + 45px); /* icon height/2 + margin */
   transform: translateX(-50%);
-  max-width: 350px;
+  width: 330px;
 }
 
 /* .above: text above the icon */
 .timeline-step.above .textbox {
   top: unset;
   bottom: calc(50% + 45px);
-  left: 50%;
+  left: 60%;
   transform: translateX(-50%);
+  max-width: 330px;
 }
 
 /* Responsive adjustments */
