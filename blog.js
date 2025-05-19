@@ -414,7 +414,7 @@ function renderSingleBlog(blog) {
     <div class="blog-post">
       <div class="blog-info">
         <div class="blogger-image-container">
-          <img src="/photos/tajana-blog.jpg" alt="Blogger Image" class="blogger-image" />
+          <img src="photos/tajana-blog.jpg" alt="Blogger Image" class="blogger-image" />
         </div>
         <div class="blogger-details">
           <label>Autor:</label>
