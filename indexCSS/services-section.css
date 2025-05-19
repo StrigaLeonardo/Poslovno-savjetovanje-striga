@@ -109,7 +109,7 @@
   flex-direction: column;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
-  max-width: 330px;
+  max-width: 340px;
   min-width: 330px;
   min-height: 320px;
 }
@@ -131,8 +131,9 @@
 }
 
 .service-title {
-  font-size: 1.5em;
+  font-size: var(--title-font);
   margin-bottom: 0.5em;
+  text-align: center;
 }
 
 .service-description {

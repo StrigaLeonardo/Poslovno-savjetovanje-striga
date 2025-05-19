@@ -110,75 +110,24 @@
   flex: 2;
   text-align: justify;
 }
+/* SECOND SECTION*/
 
 .work-process {
   background-color: var(--off-white);
-  padding: 0em 2em;
-  padding-bottom: 3em;
+  padding: 0em 2em 3em 2em;
 }
 
-.timeline {
-  position: relative;
+.work-process-heading {
+  margin-bottom: 3em;
   max-width: 1200px;
   margin: 0 auto;
   padding: 1em;
 }
 
-.container {
-  position: relative;
-  width: 50%;
-}
-
-.textbox {
-  padding: 0em 1em;
-  position: relative;
-  border-radius: 6px;
-  margin: 1em;
-  margin-left: 2em;
-  margin-right: 2em;
-}
-
-.left-container {
-  left: 0;
-}
-
-.right-container {
-  left: 50%;
-}
-
-.container svg {
-  position: absolute;
-  right: -20px;
-  top: -7px;
-  z-index: 5;
-  margin: 0;
-}
-
-.left-container svg {
-  right: 3px;
-}
-
-.right-container svg {
-  left: 0px;
-}
-
-.timeline::after {
-  content: "";
-  position: absolute;
-  width: 3px;
-  height: 100%;
-  background-color: var(--primary-color);
-  top: 0;
-  left: 50%;
-  margin-left: -3px;
-  z-index: 5;
-  padding: 1em 0;
-}
-
 .work-process-title {
   margin: 0;
   margin-top: 1em;
-  font-size: 2.3em;
+  font-size: var(--title-font);
   margin-left: 0.5em;
 }
 
@@ -192,26 +141,163 @@
   width: 65%;
 }
 
-.work-process-heading {
-  margin-bottom: 3em;
+/* Timeline styles */
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  position: relative;
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 1em;
+  margin: 3em auto 0 auto;
+  padding-bottom: 2em;
+  min-height: 220px;
 }
 
-.textbox p {
-  font-size: 1.2em;
-  color: #333;
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--primary-color);
+  z-index: 0;
+  transform: translateY(-50%);
+}
+
+.timeline-step {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  min-width: 180px;
+  max-width: 260px;
+  margin: 0 0.5em;
+}
+
+/* This is the trick: use a wrapper to align icon vertically centered */
+.icon {
+  width: 70px;
+  height: 70px;
+  background: #fff;
+  border: 4px solid var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Place .icon absolutely, so .textbox can be above or below */
+.timeline-step {
+  position: relative;
+  min-height: 180px; /* Ensures enough space for text above/below */
+}
+
+.textbox {
+  width: 100%;
 }
 
 .textbox h2 {
-  font-size: 1.7em;
+  color: black;
 }
 
-#right-align {
-  text-align: right;
+/* Default: text below the icon */
+.timeline-step .textbox {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 45px); /* icon height/2 + margin */
+  transform: translateX(-50%);
+  max-width: 350px;
 }
 
+/* .above: text above the icon */
+.timeline-step.above .textbox {
+  top: unset;
+  bottom: calc(50% + 45px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .timeline {
+    flex-direction: column;
+    align-items: center;
+    min-height: unset;
+    padding-bottom: 0;
+  }
+  .timeline::before {
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    transform: translateX(-50%);
+  }
+  .timeline-step {
+    max-width: 100%;
+    width: 100%;
+    min-height: 140px;
+    margin: 2em 0;
+  }
+  .icon {
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0);
+    position: absolute;
+  }
+  .timeline-step .textbox,
+  .timeline-step.above .textbox {
+    position: static;
+    transform: none;
+    max-width: 100%;
+    margin-top: 90px; /* space below icon */
+    margin-bottom: 0;
+    left: auto;
+    top: auto;
+    bottom: auto;
+  }
+  .timeline-step.above .textbox {
+    margin-top: 0;
+    margin-bottom: 90px; /* space above icon */
+  }
+}
+
+@media (max-width: 900px) {
+  .timeline {
+    flex-direction: column;
+    align-items: center;
+    min-height: unset;
+    padding-bottom: 0;
+  }
+  .timeline::before {
+    top: 0;
+    left: 35px;
+    width: 4px;
+    height: 100%;
+  }
+  .timeline-step {
+    width: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 2em;
+  }
+  .icon {
+    margin-right: 2em;
+    margin-bottom: 0;
+  }
+  .textbox {
+    text-align: left;
+    max-width: 100%;
+  }
+}
 @media (max-width: 768px) {
   .why-us-content {
     flex-direction: column;

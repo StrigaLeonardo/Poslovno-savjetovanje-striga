@@ -14,13 +14,13 @@
 }
 
 .contact-us-title {
-  font-size: 2em;
+  font-size: var(--title-font);
   margin-bottom: 1em;
   margin-top: 0;
 }
 
 .contact-us-text {
-  font-size: 1.2em;
+  font-size: var(--text-font);
   color: #333;
 }
 

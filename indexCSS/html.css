@@ -15,4 +15,7 @@ html {
   --primary-color: #5f8aa3;
   --secondary-color: #496b79;
   --off-white: #f9f9f9;
+
+  --title-font: 2em;
+  --text-font: 1.2em;
 }
