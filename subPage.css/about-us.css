@@ -230,8 +230,17 @@
 
 @media (max-width: 900px) {
   .work-process-subtitle {
-    width: 100%;
-    margin-bottom: 0;
+    display: none;
+  }
+
+  .work-process {
+    padding-bottom: 2em;
+    padding-top: 2em;
+  }
+
+  .work-process-wrapper {
+    border-left: none;
+    padding-left: 0;
   }
 
   .timeline {
@@ -299,8 +308,8 @@
   }
 
   .textbox h2 {
-    font-size: var(--title-font);
-    margin-top: 0.1em;
+    font-size: var(--mobile-title-font);
+    margin-top: 0.3em;
     margin-bottom: 0.3em;
   }
 
@@ -346,7 +355,7 @@
   }
 
   .why-us-item-title {
-    font-size: var(--text-font);
+    font-size: var(--mobile-title-font);
     color: black;
   }
 
@@ -374,7 +383,6 @@
   .my-story-title {
     font-size: var(--title-font);
     text-align: left;
-    margin-top: 1em;
   }
 
   .about-me-text,

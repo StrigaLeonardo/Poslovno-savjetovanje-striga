@@ -126,7 +126,10 @@
   .services-header-title h2,
   .services-description p {
     max-width: 90%;
-    text-align: left;
+  }
+
+  .services-description p {
+    text-align: justify;
   }
 
   .services-inner-container {
