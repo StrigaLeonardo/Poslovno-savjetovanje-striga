@@ -39,11 +39,13 @@
   margin-bottom: 1em;
 }
 
+/* About me*/
+
 .about-me-wrapper {
   display: flex;
   max-width: 1200px;
   margin: 3em auto;
-  gap: 1em;
+  gap: 3em;
   flex-wrap: wrap;
 }
 
@@ -54,52 +56,34 @@
   gap: 1em;
 }
 
-.about-me-container,
-.my-story-container {
-  padding: 1em;
-}
-
 .about-me-image {
   flex: 1;
   position: relative;
   display: inline-block;
-  width: 300px;
+  width: 500px;
   margin: 0 auto;
-  transform: translateX(5%);
-}
-
-.splatter-image {
-  position: absolute;
-  top: 49%;
-  left: 45%;
-  transform: translate(-55%, -50%) rotate(266deg);
-  z-index: 1;
-  width: 200%;
-  max-width: 600px;
-  height: auto;
-  opacity: 0.8;
+  margin-top: 0.6em;
 }
 
 .about-me-image img[alt="Tajana"] {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 300px;
+  max-width: 500px;
   height: auto;
   display: block;
-  transform: rotate(-2deg);
 }
 
 .about-me-title,
 .my-story-title {
-  font-size: 2.3em;
+  font-size: var(--title-font);
   margin-bottom: 0.5em;
   margin-top: 0;
 }
 
 .about-me-text,
 .my-story-text {
-  font-size: 1.2em;
+  font-size: var(--text-font);
   line-height: 1.6;
   color: #333;
   margin-bottom: 0;
@@ -110,6 +94,7 @@
   flex: 2;
   text-align: justify;
 }
+
 /* SECOND SECTION*/
 
 .work-process {
@@ -138,7 +123,7 @@
   margin-top: 0.2em;
   padding-top: 0.2em;
   color: #333;
-  border-top: 2px solid var(--primary-color);
+
   width: 65%;
   margin-bottom: 5em;
 }
@@ -210,10 +195,14 @@
 .textbox h2 {
   color: black;
   font-size: 1.7em;
+  margin-bottom: 0;
 }
 
 .textbox p {
   font-size: var(--text-font);
+  text-align: justify;
+  margin-top: 0.5em;
+  color: #333;
 }
 
 /* Default: text below the icon */
