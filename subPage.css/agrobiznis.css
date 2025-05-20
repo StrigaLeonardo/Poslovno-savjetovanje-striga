@@ -197,6 +197,10 @@
   padding-bottom: 1em;
 }
 
+.reversewhite {
+  background-color: #ffffff;
+}
+
 @media (max-width: 768px) {
   /* Wrapper Adjustments */
   .agrobiznis-wrapper {
