@@ -125,7 +125,7 @@
     padding: 0.4em;
     height: auto;
     width: 100%;
-    max-width: 300px;
+    max-width: 350px;
     margin-bottom: 1em;
   }
 
@@ -135,7 +135,7 @@
   }
 
   .profile-text {
-    margin: 1em;
+    margin: 0em auto;
     text-align: center;
     opacity: 1;
   }
@@ -149,16 +149,16 @@
     font-size: var(--text-font);
     text-align: justify;
     opacity: 1;
-    margin: 0.5em 0;
+    max-width: 90%;
+    margin: 0em auto;
   }
 
-  .profile-a {
-    position: relative;
-    right: 0;
-    padding-right: 1.2em;
-    font-size: 0.9em;
-    white-space: nowrap;
-    text-align: right;
-    display: block;
+  @media (max-width: 768px) {
+    .profile-a {
+      display: inline-block;
+      margin-top: 1.2em;
+      text-align: right;
+      position: static;
+    }
   }
 }

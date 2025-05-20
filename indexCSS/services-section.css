@@ -128,4 +128,8 @@
     max-width: 90%;
     text-align: left;
   }
+
+  .services-inner-container {
+    max-width: 90%;
+  }
 }

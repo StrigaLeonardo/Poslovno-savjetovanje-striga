@@ -49,9 +49,8 @@
   }
 
   .contact-us-content {
-    max-width: 90%;
-
     display: block;
+    max-width: 90%;
   }
 
   .contact-us-title {
