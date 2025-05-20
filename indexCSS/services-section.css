@@ -119,13 +119,13 @@
     align-items: center;
   }
   .service-card {
-    max-width: 95%;
-    min-width: 0;
+    max-width: 90%;
+    min-width: 90%;
     padding: 1.2em 0.8em 1em 0.8em;
   }
   .services-header-title h2,
   .services-description p {
-    max-width: 100%;
+    max-width: 90%;
     text-align: left;
   }
 }

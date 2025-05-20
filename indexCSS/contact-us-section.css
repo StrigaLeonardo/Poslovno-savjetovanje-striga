@@ -42,22 +42,25 @@
 /* About Us Section for Mobile View */
 @media (max-width: 768px) {
   .contact-us-section {
-    padding: 1.5em;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .contact-us-content {
-    max-width: 100%;
-    margin: 0 1em;
+    max-width: 90%;
+
     display: block;
   }
 
   .contact-us-title {
-    font-size: 1.6em;
+    font-size: var(--title-font);
     display: block;
   }
 
   .contact-us-text {
-    font-size: 1em;
+    font-size: var(--text-font);
     display: block;
   }
 

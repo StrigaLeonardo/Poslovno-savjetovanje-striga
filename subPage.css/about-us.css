@@ -232,74 +232,85 @@
 @media (max-width: 900px) {
   .timeline {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    max-width: 100%;
+    margin: 2em auto 0 auto;
+    padding-left: 3em; /* space for vertical line and icons */
     min-height: unset;
-    padding-bottom: 0;
+    position: relative;
   }
+
+  /* Vertical line on the left */
   .timeline::before {
+    content: "";
+    position: absolute;
     top: 0;
-    left: 50%;
+    left: 1.5em; /* position vertical line near left edge */
     width: 4px;
     height: 100%;
-    transform: translateX(-50%);
-  }
-  .timeline-step {
-    max-width: 100%;
-    width: 100%;
-    min-height: 140px;
-    margin: 2em 0;
-  }
-  .icon {
-    left: 50%;
-    top: 0;
-    transform: translate(-50%, 0);
-    position: absolute;
-  }
-  .timeline-step .textbox,
-  .timeline-step.above .textbox {
-    position: static;
+    background: var(--primary-color);
     transform: none;
+    z-index: 0;
+  }
+
+  /* Each timeline step becomes a horizontal flex row */
+  .timeline-step {
+    flex-direction: row;
+    align-items: flex-start;
+    position: relative;
+    margin: 1.5em 0;
+    min-width: auto;
     max-width: 100%;
-    margin-top: 90px; /* space below icon */
-    margin-bottom: 0;
+  }
+
+  /* Icon aligned left, positioned relative to text */
+  .icon {
+    position: absolute;
+    left: 0;
+    top: 0.5em; /* vertically align with text */
+    transform: none;
+    width: 50px;
+    height: 50px;
+    border-width: 3px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Textbox placed right of icon */
+  .textbox {
+    position: relative;
+    margin-left: 4.5em; /* space for icon */
+    width: calc(100% - 4.5em);
+    text-align: left;
+    max-width: none;
+  }
+
+  /* Adjust font sizes for mobile */
+  .timeline-step .textbox h2 {
+    font-size: 1.4em;
+  }
+
+  .timeline-step .textbox p {
+    font-size: var(--text-font);
+    margin-top: 0.3em;
+  }
+
+  /* Remove absolute positioning on text for mobile */
+  .timeline-step .textbox {
     left: auto;
     top: auto;
-    bottom: auto;
+    transform: none;
+  }
+
+  /* Ignore .above class on mobile, keep uniform layout */
+  .timeline-step.above {
+    flex-direction: row;
   }
   .timeline-step.above .textbox {
-    margin-top: 0;
-    margin-bottom: 90px; /* space above icon */
+    bottom: auto;
+    margin-left: 4.5em;
   }
 }
 
-@media (max-width: 900px) {
-  .timeline {
-    flex-direction: column;
-    align-items: center;
-    min-height: unset;
-    padding-bottom: 0;
-  }
-  .timeline::before {
-    top: 0;
-    left: 35px;
-    width: 4px;
-    height: 100%;
-  }
-  .timeline-step {
-    width: 100%;
-    flex-direction: row;
-    align-items: flex-start;
-    margin-bottom: 2em;
-  }
-  .icon {
-    margin-right: 2em;
-    margin-bottom: 0;
-  }
-  .textbox {
-    text-align: left;
-    max-width: 100%;
-  }
-}
 @media (max-width: 768px) {
   .why-us-content {
     flex-direction: column;
@@ -312,26 +323,10 @@
   }
 
   .why-us-item-title {
-    font-size: 1.2em;
+    font-size: var(--title-font);
   }
 
   .why-us-item {
-    font-size: 1em;
-  }
-
-  .about-me-text {
-    font-size: 1em;
-  }
-
-  .about-me-title {
-    font-size: 2em;
-  }
-
-  .my-story-text {
-    font-size: 1em;
-  }
-
-  .my-story-title {
-    font-size: 2em;
+    font-size: var(--text-font);
   }
 }

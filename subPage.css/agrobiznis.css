@@ -139,6 +139,7 @@
   max-width: 1200px;
   margin: 3em auto;
   padding: 2em;
+  padding-top: 0;
   text-align: center;
 }
 

@@ -112,7 +112,6 @@
 @media (max-width: 768px) {
   .profile-banner-wrapper {
     height: auto;
-    max-width: 90%;
     margin: 1em auto;
   }
 
@@ -155,7 +154,8 @@
 
   .profile-a {
     position: relative;
-    margin-left: 20.5em;
+    right: 0;
+    padding-right: 1.2em;
     font-size: 0.9em;
     white-space: nowrap;
     text-align: right;
