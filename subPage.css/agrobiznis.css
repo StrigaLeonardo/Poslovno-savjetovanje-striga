@@ -220,15 +220,37 @@
     max-width: 90%;
     padding: 0;
     margin: 0 auto;
+    margin-top: 7em;
   }
 
   .agrobiznis-image-container {
-    display: none; /* Hide image for simplicity */
+    position: initial;
+  }
+
+  .reverse-color {
+    color: white;
+    z-index: 2;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    top: -2em;
+  }
+
+  .agrobiznis-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 30%;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
   }
 
   .agrobiznis-title {
     font-size: var(--title-font);
     text-align: center;
+    width: 100%;
+    margin-bottom: 0;
   }
 
   .agrobiznis-text {
