@@ -209,14 +209,13 @@
     margin: 0 auto;
     box-shadow: none;
     border-radius: 0;
-    padding-top: 0;
+    padding-top: 8em;
   }
   .agrobiznis-content {
     margin-top: 0;
     padding: 0;
     max-width: 90%;
     margin: 0 auto;
-    margin-top: 8em;
   }
 
   .content-wrapper {
