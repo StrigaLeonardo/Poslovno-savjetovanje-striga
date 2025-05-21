@@ -213,14 +213,13 @@
 
   .content-wrapper {
     flex-direction: column;
-    margin-top: 2em;
   }
 
   .agrobiznis-content {
     max-width: 90%;
     padding: 0;
     margin: 0 auto;
-    margin-top: 7em;
+    margin-top: 8em;
   }
 
   .agrobiznis-image-container {
@@ -233,14 +232,14 @@
     position: relative;
     width: 100%;
     max-width: 100%;
-    top: -2em;
+    top: -1em;
   }
 
   .agrobiznis-image {
     width: 100%;
     max-width: 100%;
-    height: auto;
-    max-height: 30%;
+    max-height: 37vh;
+    height: 100%;
     border-radius: 0;
     margin: 0;
     padding: 0;
@@ -251,11 +250,15 @@
     text-align: center;
     width: 100%;
     margin-bottom: 0;
+    white-space: nowrap;
+    text-shadow: 0 2px 8px rgb(0, 0, 0),
+      /* soft outer shadow */ 0 1px 0 rgb(0, 0, 0);
   }
 
   .agrobiznis-text {
     font-size: var(--text-font);
     text-align: justify;
+    margin-top: 2em;
   }
 
   /* Services Section */
