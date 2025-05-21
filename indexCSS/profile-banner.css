@@ -138,11 +138,13 @@
     margin: 0em auto;
     text-align: center;
     opacity: 1;
+    line-height: 1.5;
   }
 
   .profile-h3 {
     font-size: var(--title-font);
     text-align: center;
+    padding-bottom: 0.5em;
   }
 
   .profile-p {

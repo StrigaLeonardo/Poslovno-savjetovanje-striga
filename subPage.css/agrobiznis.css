@@ -45,9 +45,9 @@
 }
 
 .agrobiznis-text {
-  font-size: 1.1em;
+  font-size: var(--text-font);
   color: #444;
-  line-height: 1.6em;
+  line-height: 1.5em;
   margin-bottom: 1.5em;
   text-align: justify;
 }
@@ -200,22 +200,26 @@
 
 .reversewhite {
   background-color: #ffffff;
+  padding-top: 0;
 }
 
 @media (max-width: 768px) {
   /* Wrapper Adjustments */
   .agrobiznis-wrapper {
-    margin: 2em 1em;
+    margin: 0 auto;
     box-shadow: none;
     border-radius: 0;
   }
 
   .content-wrapper {
-    flex-direction: column; /* Stack content */
+    flex-direction: column;
+    margin-top: 2em;
   }
 
   .agrobiznis-content {
-    padding: 1.5em;
+    max-width: 90%;
+    padding: 0;
+    margin: 0 auto;
   }
 
   .agrobiznis-image-container {
@@ -223,12 +227,12 @@
   }
 
   .agrobiznis-title {
-    font-size: 1.5em;
+    font-size: var(--title-font);
     text-align: center;
   }
 
   .agrobiznis-text {
-    font-size: 1em;
+    font-size: var(--text-font);
     text-align: justify;
   }
 
@@ -236,25 +240,29 @@
 
   .services-section-service-page {
     justify-content: center;
-    padding: 1em;
+    width: 100%;
+    padding: 0;
   }
   .services-section-wrapper {
-    padding: 1em;
+    padding: 0em;
   }
 
   .services-title-main {
-    font-size: 1.5em;
+    font-size: var(--title-font);
+    max-width: 90%;
   }
 
   .services-container {
     grid-template-columns: 1fr;
     gap: 1em;
+    margin: 0 auto;
+    max-width: 90%;
   }
 
   .service-card-service-page {
-    width: 90%;
     padding: 1em;
     margin: 1em auto;
+    width: 90%;
   }
 
   .service-header-service-page {
@@ -271,7 +279,7 @@
   }
 
   .development-strategy-title {
-    font-size: 1.5em;
+    font-size: var(--title-font);
     margin-bottom: 0.5em;
   }
 
@@ -292,7 +300,7 @@
   }
 
   .development-card-title {
-    font-size: 1.2em;
+    font-size: var(--mobile-title-font);
   }
 
   .services-section-service-page {
@@ -300,18 +308,18 @@
   }
 
   .development-strategy-text {
-    font-size: 1em;
+    font-size: var(--text-font);
   }
 
   .service-description-service-page {
-    font-size: 1em;
+    font-size: var(--text-font);
   }
 
   .service-title-service-page {
-    font-size: 1.2em;
+    font-size: var(--mobile-title-font);
   }
 
   .development-description {
-    font-size: 1em;
+    font-size: var(--text-font);
   }
 }

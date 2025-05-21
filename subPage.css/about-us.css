@@ -47,7 +47,7 @@
   display: flex;
   max-width: 1200px;
   margin: 3em auto;
-  gap: 3em;
+  gap: 2em;
   flex-wrap: wrap;
 }
 
@@ -86,7 +86,7 @@
 .about-me-text,
 .my-story-text {
   font-size: var(--text-font);
-  line-height: 1.6;
+  line-height: 1.5;
   color: #333;
   margin-bottom: 0;
   text-align: justify;
@@ -101,7 +101,7 @@
 
 .work-process {
   background-color: var(--off-white);
-  padding: 0em 2em 8em 3em;
+  padding: 2em 2em 8em 3em;
   height: fit-content;
 }
 
@@ -114,7 +114,6 @@
   margin-bottom: 3em;
   max-width: 1200px;
   margin: 0 auto;
-  padding-top: 1em;
   padding-bottom: 1em;
 }
 
@@ -205,7 +204,6 @@
 
 .textbox p {
   font-size: var(--text-font);
-  text-align: justify;
   margin-top: 0.5em;
   color: #333;
 }
@@ -310,7 +308,7 @@
   .textbox h2 {
     font-size: var(--mobile-title-font);
     margin-top: 0.3em;
-    margin-bottom: 0.3em;
+    margin-bottom: 0.1em;
   }
 
   .textbox p {
