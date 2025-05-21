@@ -238,8 +238,7 @@
   .agrobiznis-image {
     width: 100%;
     max-width: 100%;
-    max-height: 37vh;
-    height: 100%;
+    max-height: 250px;
     border-radius: 0;
     margin: 0;
     padding: 0;
@@ -251,7 +250,7 @@
     width: 100%;
     margin-bottom: 0;
     white-space: nowrap;
-    text-shadow: 0 2px 8px rgb(0, 0, 0),
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35),
       /* soft outer shadow */ 0 1px 0 rgb(0, 0, 0);
   }
 
