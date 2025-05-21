@@ -80,7 +80,19 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+  function adjustContentOffset() {
+    const header = document.querySelector(".page-header");
+    const agrobiznis = document.querySelector(".agrobiznis-wrapper");
+    if (!header || !agrobiznis) return;
 
+    const headerHeight = header.offsetHeight;
+    agrobiznis.style.paddingTop = headerHeight + "px";
+  }
+
+  // Call on load, resize, and scroll (because header height changes on scroll)
+  window.addEventListener("load", adjustContentOffset);
+  window.addEventListener("resize", adjustContentOffset);
+  window.addEventListener("scroll", adjustContentOffset);
   // Function to create the hamburger menu
   function setupHamburgerMenu() {
     const headerContainer = document.querySelector(".header-container");
