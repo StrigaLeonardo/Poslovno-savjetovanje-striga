@@ -134,6 +134,21 @@
   padding-bottom: 0.5em;
 }
 
+.blog-header-home {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-left: 5px solid var(--primary-color);
+  margin-top: 3em;
+}
+
+.blog-header-home h2 {
+  font-size: var(--title-font);
+  margin: 0 0 0.5em 0;
+  letter-spacing: 0.01em;
+  text-align: left;
+  padding-left: 0.7em;
+}
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -304,6 +319,10 @@
 
   .blog-section-title {
     margin-top: 0em;
+  }
+
+  .blog-header-home {
+    max-width: 90%;
   }
 }
 
