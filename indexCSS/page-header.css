@@ -168,30 +168,30 @@
   }
 
   .page-navigation {
-    display: flex;
     position: fixed;
     top: 60px;
-    left: 90%;
-    transform: translateX(-50%);
-    background-color: #ffffff;
-    border: 1px solid #dcdcdc;
-    border-radius: 0px 8px;
-    width: 100%;
-    max-width: 90%;
+    right: 0;
+    left: auto;
+    background-color: #fff;
+    border-left: 1px solid #dcdcdc;
+    border-radius: 8px 0 0 8px;
+    width: 80vw;
+    max-width: 250px;
+    height: calc(100vh - 60px);
     flex-direction: column;
     gap: 0.5em;
     padding: 1em 1em;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-    z-index: 9;
-    max-height: 0;
-    overflow: hidden;
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.15);
+    z-index: 99;
+    transform: translateX(100%);
     opacity: 0;
-    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    max-width: 70%;
+    transition: transform 0.4s cubic-bezier(0.7, 0.3, 0.3, 1), opacity 0.3s;
+    max-height: none;
+    overflow-y: auto;
   }
 
   .page-navigation.show {
-    max-height: 500px;
+    transform: translateX(0);
     opacity: 1;
   }
 
@@ -238,19 +238,25 @@
     text-align: left;
     color: #2c3e50;
     text-decoration: none;
-    padding: 0.5em 0;
+    padding: 1em 0;
     transition: background-color 0.3s ease, color 0.3s ease;
     border-radius: 6px;
+    margin-bottom: 1em;
   }
 
   .page-navigation a > h3 {
-    text-align: center;
+    font-family: "Roboto-light", Arial, sans-serif;
+    font-weight: 300; /* Roboto Light */
+    font-size: 1.35em; /* Make them bigger */
+    color: #000000;
     margin: 0;
-    display: inline-flex;
-    justify-content: left;
+    padding: 0.6em 1.2em;
+    transition: color 0.3s, background 0.3s;
+    letter-spacing: 0.03em;
+    border-radius: 6px;
+    display: flex;
     align-items: center;
-    padding: 0.5em 1em;
-    width: 100%;
+    background: transparent;
   }
 
   .page-navigation a:hover {
@@ -301,7 +307,16 @@
     fill: #333;
   }
 
-  .dropdown:hover a svg {
+  .dropdown:click a svg {
     transform: rotate(180deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .dropdown-content {
+    display: none;
+  }
+  .dropdown-content.show {
+    display: block;
   }
 }

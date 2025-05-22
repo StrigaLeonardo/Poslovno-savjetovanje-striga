@@ -86,143 +86,114 @@ document.addEventListener("DOMContentLoaded", function () {
     const headerContainer = document.querySelector(".header-container");
     const pageNavigation = document.getElementById("page-navigation");
 
-    if (!headerContainer || !pageNavigation) {
-      return;
-    }
+    if (!headerContainer || !pageNavigation) return;
 
     // Function to create the hamburger button
     function createHamburgerMenu() {
       const hamburgerMenu = document.createElement("button");
       hamburgerMenu.classList.add("hamburger-menu");
+      hamburgerMenu.setAttribute("aria-label", "Otvori navigaciju");
       hamburgerMenu.innerHTML = `
-        <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#e8eaed">
-          <path d="M120-240v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/>
-        </svg>
-        <svg class="close-icon hidden" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#e8eaed">
-          <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
-        </svg>
-      `;
+      <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#cdd9e8">
+        <path d="M120-240v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/>
+      </svg>
+      <svg class="close-icon hidden" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#cdd9e8">
+        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+      </svg>
+    `;
       headerContainer.insertBefore(hamburgerMenu, pageNavigation);
 
-      // Add click event to toggle menu visibility and icon
-      hamburgerMenu.addEventListener("click", function () {
+      // Toggle navigation
+      hamburgerMenu.addEventListener("click", function (e) {
+        e.stopPropagation();
         pageNavigation.classList.toggle("show");
+        document.body.classList.toggle("mobile-nav-open");
 
-        // Toggle icon
-        const hamburgerIcon = hamburgerMenu.querySelector(".hamburger-icon");
-        const closeIcon = hamburgerMenu.querySelector(".close-icon");
-        if (pageNavigation.classList.contains("show")) {
-          hamburgerIcon.classList.add("hidden");
-          closeIcon.classList.remove("hidden");
-          pageNavigation.style.maxHeight = `${pageNavigation.scrollHeight}px`;
-          pageNavigation.style.opacity = "1";
-        } else {
-          hamburgerIcon.classList.remove("hidden");
-          closeIcon.classList.add("hidden");
-          pageNavigation.style.maxHeight = "0";
-          pageNavigation.style.opacity = "0";
-        }
+        const hamburgerIcon = this.querySelector(".hamburger-icon");
+        const closeIcon = this.querySelector(".close-icon");
+        hamburgerIcon.classList.toggle("hidden");
+        closeIcon.classList.toggle("hidden");
       });
+
+      // Touch-friendly dropdowns for mobile
+      pageNavigation
+        .querySelectorAll(".dropdown > a")
+        .forEach((dropdownLink) => {
+          dropdownLink.addEventListener("click", function (e) {
+            if (window.innerWidth > 768) return;
+            e.preventDefault();
+
+            const currentDropdown =
+              this.parentElement.querySelector(".dropdown-content");
+            const isOpen = currentDropdown.classList.contains("show");
+
+            // Close all dropdowns first
+            pageNavigation
+              .querySelectorAll(".dropdown-content")
+              .forEach((el) => el.classList.remove("show"));
+
+            // Toggle: if it was not open, open it; if it was open, leave all closed
+            if (!isOpen) {
+              currentDropdown.classList.add("show");
+            }
+            // If it was open, we already closed it above, so nothing else needed
+          });
+        });
     }
 
-    // Function to handle showing and hiding the hamburger menu
+    // Handle window resize
     function handleResize() {
       if (window.innerWidth <= 768) {
         if (!document.querySelector(".hamburger-menu")) {
           createHamburgerMenu();
         }
-        pageNavigation.style.maxHeight = "0";
-        pageNavigation.style.opacity = "0";
+        pageNavigation.classList.remove("show");
+        document.body.classList.remove("mobile-nav-open");
       } else {
         const hamburgerMenu = document.querySelector(".hamburger-menu");
-        if (hamburgerMenu) {
-          hamburgerMenu.remove();
-          pageNavigation.classList.remove("show");
-          pageNavigation.style.display = "flex";
-          pageNavigation.style.maxHeight = "";
-          pageNavigation.style.opacity = "";
-        }
+        if (hamburgerMenu) hamburgerMenu.remove();
+        pageNavigation.classList.remove("show");
+        document.body.classList.remove("mobile-nav-open");
+        pageNavigation
+          .querySelectorAll(".dropdown-content.show")
+          .forEach((el) => el.classList.remove("show"));
       }
     }
 
-    // Initial check and event listener for resizing
+    // Close menu when clicking outside
+    document.addEventListener("click", function (e) {
+      if (window.innerWidth > 768) return;
+      if (
+        !e.target.closest(".page-navigation") &&
+        !e.target.closest(".hamburger-menu")
+      ) {
+        pageNavigation.classList.remove("show");
+        document.body.classList.remove("mobile-nav-open");
+
+        const hamburgerMenu = document.querySelector(".hamburger-menu");
+        if (hamburgerMenu) {
+          hamburgerMenu
+            .querySelector(".hamburger-icon")
+            .classList.remove("hidden");
+          hamburgerMenu.querySelector(".close-icon").classList.add("hidden");
+        }
+
+        // Close all dropdowns
+        pageNavigation
+          .querySelectorAll(".dropdown-content")
+          .forEach((el) => el.classList.remove("show"));
+      }
+    });
+
+    // Initial setup
     handleResize();
     window.addEventListener("resize", handleResize);
   }
 
-  // Function to adjust the padding of the main element dynamically
-  function adjustMainPadding() {
-    const header = document.querySelector(".page-header");
-    const mainContent = document.querySelector("main");
+  document.addEventListener("DOMContentLoaded", setupHamburgerMenu);
 
-    function setMainPadding() {
-      if (header && mainContent) {
-        const headerHeight = header.offsetHeight;
-        mainContent.style.paddingTop = `${headerHeight}px`;
-      }
-    }
-
-    // Adjust padding on load
-    setMainPadding();
-
-    // Adjust padding on window resize
-    window.addEventListener("resize", setMainPadding);
-  }
-
-  function isElementInViewport(el, offset = 50) {
-    const rect = el.getBoundingClientRect();
-    return (
-      rect.top >= -offset &&
-      rect.left >= 0 &&
-      rect.bottom <=
-        (window.innerHeight + offset ||
-          document.documentElement.clientHeight + offset) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-  }
-
-  document.addEventListener("contextmenu", function (e) {
-    if (e.target.tagName === "IMG") {
-      e.preventDefault();
-    }
-  });
-
-  // Function to handle USLUGE dropdown link behavior
-  function setupUslugeDropdown() {
-    const uslugeLink = document.querySelector(".dropdown > a");
-    const dropdownContent = document.querySelector(".dropdown-content");
-
-    let clickTimer = null;
-
-    // Add a click event to the USLUGE link
-    uslugeLink.addEventListener("click", function (event) {
-      event.preventDefault();
-
-      if (
-        dropdownContent.style.maxHeight &&
-        dropdownContent.style.maxHeight !== "0px"
-      ) {
-        dropdownContent.style.maxHeight = "0";
-        dropdownContent.style.opacity = "0";
-      } else {
-        dropdownContent.style.maxHeight = "600px";
-        dropdownContent.style.opacity = "1";
-      }
-
-      if (clickTimer) {
-        clearTimeout(clickTimer);
-        clickTimer = null;
-      }
-
-      clickTimer = setTimeout(() => {
-        clickTimer = null;
-      }, 300);
-    });
-
-    uslugeLink.addEventListener("dblclick", function () {
-      window.location.href = "usluge.html";
-    });
-  }
+  // Call the function on DOMContentLoaded
+  document.addEventListener("DOMContentLoaded", setupHamburgerMenu);
 
   document.querySelectorAll(".service-card-link").forEach((link) => {
     link.addEventListener("click", function (e) {
@@ -234,66 +205,89 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("load", function () {
     document.body.style.opacity = 1;
   });
-
-  function loadAnalytics() {
-    // Dynamically load Google Analytics script
-    const script = document.createElement("script");
-    script.async = true;
-    script.src = "https://www.googletagmanager.com/gtag/js?id=YOUR_GA_ID";
-    document.head.appendChild(script);
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
-    gtag("config", "YOUR_GA_ID");
-  }
 });
+
 document.addEventListener("DOMContentLoaded", function () {
-  const banner = document.getElementById("cookie-consent-banner");
-  const settingsModal = document.getElementById("cookie-settings");
-  const consent = localStorage.getItem("cookieConsent");
+  // 1. Load the cookie banner HTML dynamically
+  fetch("cookie-banner.html")
+    .then((response) => response.text())
+    .then((html) => {
+      document.getElementById("cookie-banner-placeholder").innerHTML = html;
 
-  // Only show banner if no consent decision exists
-  if (!consent) {
-    banner.style.display = "block";
-  }
+      // 2. Now that the banner exists in the DOM, select elements
+      const banner = document.getElementById("cookie-consent-banner");
+      const settingsModal = document.getElementById("cookie-settings");
+      const consent = localStorage.getItem("cookieConsent");
 
-  // Accept All
-  document.getElementById("accept-cookies").addEventListener("click", () => {
-    localStorage.setItem("cookieConsent", JSON.stringify({ analytics: true }));
-    banner.style.display = "none";
-    loadAnalytics();
-  });
+      // Only show banner if no consent decision exists
+      if (!consent) {
+        banner.style.display = "block";
+      }
 
-  // Reject Non-Essential
-  document.getElementById("reject-cookies").addEventListener("click", () => {
-    localStorage.setItem("cookieConsent", JSON.stringify({ analytics: false }));
-    banner.style.display = "none";
-  });
+      // Accept All
+      document
+        .getElementById("accept-cookies")
+        .addEventListener("click", () => {
+          localStorage.setItem(
+            "cookieConsent",
+            JSON.stringify({ analytics: true })
+          );
+          banner.style.display = "none";
+          loadAnalytics();
+        });
 
-  // Open Customization
-  document.getElementById("customize-cookies").addEventListener("click", () => {
-    settingsModal.style.display = "block";
-  });
+      // Reject Non-Essential
+      document
+        .getElementById("reject-cookies")
+        .addEventListener("click", () => {
+          localStorage.setItem(
+            "cookieConsent",
+            JSON.stringify({ analytics: false })
+          );
+          banner.style.display = "none";
+        });
 
-  // Save Preferences
-  document.getElementById("save-preferences").addEventListener("click", () => {
-    const analyticsChecked =
-      document.getElementById("analytics-cookies").checked;
-    localStorage.setItem(
-      "cookieConsent",
-      JSON.stringify({ analytics: analyticsChecked })
-    );
-    settingsModal.style.display = "none";
-    banner.style.display = "none";
-    if (analyticsChecked) loadAnalytics();
-  });
+      // Open Customization
+      document
+        .getElementById("customize-cookies")
+        .addEventListener("click", () => {
+          settingsModal.style.display = "block";
+        });
 
-  // Load analytics if consent exists
-  if (consent) {
-    const { analytics } = JSON.parse(consent);
-    if (analytics) loadAnalytics();
-  }
+      // Save Preferences
+      document
+        .getElementById("save-preferences")
+        .addEventListener("click", () => {
+          const analyticsChecked =
+            document.getElementById("analytics-cookies").checked;
+          localStorage.setItem(
+            "cookieConsent",
+            JSON.stringify({ analytics: analyticsChecked })
+          );
+          settingsModal.style.display = "none";
+          banner.style.display = "none";
+          if (analyticsChecked) loadAnalytics();
+        });
+
+      // Load analytics if consent exists
+      if (consent) {
+        const { analytics } = JSON.parse(consent);
+        if (analytics) loadAnalytics();
+      }
+    });
 });
+
+function loadAnalytics() {
+  // Dynamically load Google Analytics script
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = "https://www.googletagmanager.com/gtag/js?id=YOUR_GA_ID";
+  document.head.appendChild(script);
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-MB5LJKQK07");
+}
