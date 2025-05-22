@@ -93,7 +93,6 @@
   margin-bottom: 8px;
 }
 
-/* Modern Dropdown Style */
 .dropdown {
   position: relative;
 }
@@ -239,9 +238,51 @@
     color: #2c3e50;
     text-decoration: none;
     padding: 1em 0;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s, color 0.3s, font-weight 0.2s,
+      box-shadow 0.3s;
     border-radius: 6px;
-    margin-bottom: 1em;
+    margin-bottom: 0;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(44, 50, 80, 0.04);
+    position: relative;
+    font-family: "Roboto", Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  .page-navigation a:not(:last-child)::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      rgba(205, 217, 232, 0) 0%,
+      rgba(205, 217, 232, 0.4) 50%,
+      rgba(205, 217, 232, 0) 100%
+    );
+    opacity: 0.8;
+  }
+
+  .page-navigation a.active,
+  .page-navigation a[aria-current="page"] {
+    background: linear-gradient(90deg, #5f8aa3 0%, #3e5b66 100%);
+    color: #fff;
+    font-weight: 500;
+    box-shadow: 0 4px 16px rgba(44, 50, 80, 0.13);
+    /* Optional: colored border/indicator on the left */
+    border-left: 4px solid #cdd9e8;
+    padding-left: calc(1em - 4px); /* Adjust for border */
+  }
+
+  /* On hover, make text bolder and color accent */
+  .page-navigation a:hover {
+    background-color: #f5f5f5;
+    color: #5f8aa3;
+    font-weight: 500;
   }
 
   .page-navigation a > h3 {
@@ -257,11 +298,6 @@
     display: flex;
     align-items: center;
     background: transparent;
-  }
-
-  .page-navigation a:hover {
-    background-color: #f5f5f5;
-    color: #2c3e50;
   }
 
   .dropdown-content {
