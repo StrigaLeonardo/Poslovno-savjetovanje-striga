@@ -181,6 +181,12 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   }
 
+  document.addEventListener("contextmenu", function (e) {
+    if (e.target.tagName === "IMG") {
+      e.preventDefault();
+    }
+  });
+
   // Function to handle USLUGE dropdown link behavior
   function setupUslugeDropdown() {
     const uslugeLink = document.querySelector(".dropdown > a");
@@ -224,5 +230,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const card = this.querySelector(".service-card");
       card.classList.toggle("expanded");
     });
+  });
+  window.addEventListener("load", function () {
+    document.body.style.opacity = 1;
   });
 });
