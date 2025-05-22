@@ -260,11 +260,14 @@ function renderFirstThreeBlogs() {
   const latestBlogsContainer = document.getElementById("latest-blog-container");
   latestBlogsContainer.innerHTML = "";
 
+  const blogScrollWrapper = document.createElement("div");
+  blogScrollWrapper.className = "blog-scroll-wrapper";
+
   const firstThreeBlogs = blogs.slice(0, 3);
 
   firstThreeBlogs.forEach((blog) => {
     const card = document.createElement("div");
-    card.className = "custom-post";
+    card.className = "custom-post blog-card"; // Add blog-card class for styling
     card.innerHTML = `
       <a href="single-blog.html?id=${blog.id}" class="card-link">
         <div class="custom-header-post">
@@ -283,8 +286,10 @@ function renderFirstThreeBlogs() {
         </div>
       </a>
     `;
-    latestBlogsContainer.appendChild(card);
+    blogScrollWrapper.appendChild(card);
   });
+
+  latestBlogsContainer.appendChild(blogScrollWrapper);
 }
 
 // Function to attach preloader events on the homepage

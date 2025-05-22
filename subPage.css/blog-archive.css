@@ -267,8 +267,7 @@
 /* Mobile view adjustments */
 @media (max-width: 768px) {
   .custom-container {
-    width: 95%;
-    padding: 10px;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -402,5 +401,62 @@
   .pagination-newer,
   .pagination-older {
     margin: 0 0.4em;
+  }
+}
+
+@media (max-width: 900px) {
+  #latest-blog-container .blog-scroll-wrapper {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    width: 100vw;
+    gap: 0.5em;
+    padding: 0;
+    padding-bottom: 0.5em;
+  }
+  #latest-blog-container .blog-card {
+    flex: 0 0 calc(100vw - 40px); /* Account for padding */
+    max-width: calc(100vw - 40px);
+    min-width: calc(100vw - 40px);
+    scroll-snap-align: start; /* Snap to start (left edge) instead of center */
+    margin: 0 20px; /* Add space between cards */
+    box-sizing: border-box;
+  }
+  #latest-blog-container .blog-scroll-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+  #latest-blog-container .blog-scroll-wrapper {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    width: 100vw;
+    gap: 0;
+    scroll-padding-left: 20px; /* Add padding to align snap point */
+  }
+
+  #latest-blog-container .custom-container {
+    padding: 0;
+  }
+}
+@media (min-width: 901px) {
+  #latest-blog-container .blog-scroll-wrapper {
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 1em;
+  }
+
+  #latest-blog-container .blog-card {
+    flex: 1;
+    max-width: 400px;
+    min-width: 300px;
   }
 }
