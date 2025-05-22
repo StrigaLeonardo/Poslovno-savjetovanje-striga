@@ -234,4 +234,66 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("load", function () {
     document.body.style.opacity = 1;
   });
+
+  function loadAnalytics() {
+    // Dynamically load Google Analytics script
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://www.googletagmanager.com/gtag/js?id=YOUR_GA_ID";
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "YOUR_GA_ID");
+  }
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const banner = document.getElementById("cookie-consent-banner");
+  const settingsModal = document.getElementById("cookie-settings");
+  const consent = localStorage.getItem("cookieConsent");
+
+  // Only show banner if no consent decision exists
+  if (!consent) {
+    banner.style.display = "block";
+  }
+
+  // Accept All
+  document.getElementById("accept-cookies").addEventListener("click", () => {
+    localStorage.setItem("cookieConsent", JSON.stringify({ analytics: true }));
+    banner.style.display = "none";
+    loadAnalytics();
+  });
+
+  // Reject Non-Essential
+  document.getElementById("reject-cookies").addEventListener("click", () => {
+    localStorage.setItem("cookieConsent", JSON.stringify({ analytics: false }));
+    banner.style.display = "none";
+  });
+
+  // Open Customization
+  document.getElementById("customize-cookies").addEventListener("click", () => {
+    settingsModal.style.display = "block";
+  });
+
+  // Save Preferences
+  document.getElementById("save-preferences").addEventListener("click", () => {
+    const analyticsChecked =
+      document.getElementById("analytics-cookies").checked;
+    localStorage.setItem(
+      "cookieConsent",
+      JSON.stringify({ analytics: analyticsChecked })
+    );
+    settingsModal.style.display = "none";
+    banner.style.display = "none";
+    if (analyticsChecked) loadAnalytics();
+  });
+
+  // Load analytics if consent exists
+  if (consent) {
+    const { analytics } = JSON.parse(consent);
+    if (analytics) loadAnalytics();
+  }
 });

@@ -13,6 +13,144 @@ html {
   overflow-x: hidden;
 }
 
+#cookie-consent-banner {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 300;
+  font-size: var(--text-font, 0.93em);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 2px solid #5f8aa3;
+  padding: 0.6em 0.5em;
+  box-shadow: 0 -2px 12px rgba(95, 138, 163, 0.07);
+  z-index: 9999;
+}
+
+.banner-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.banner-text {
+  color: #222;
+  font-size: var(--text-font, 0.93em);
+  margin-right: 1em;
+  flex: 1 1 auto;
+}
+
+.banner-text a {
+  color: #5f8aa3;
+  text-decoration: underline;
+  font-weight: 400;
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+  flex-shrink: 0;
+}
+
+.buttons button {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 0.93em;
+  background: #5f8aa3;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.28em 0.95em;
+  cursor: pointer;
+  transition: background 0.2s;
+  min-width: 70px;
+}
+.buttons button:hover,
+#save-preferences:hover {
+  background: #46728a;
+}
+
+#cookie-settings {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 300;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 2em 1.5em;
+  padding-top: 0;
+  border: 2px solid #5f8aa3;
+  border-radius: 12px;
+  max-width: 95vw;
+  width: 400px;
+  z-index: 10000;
+  box-shadow: 0 4px 24px rgba(95, 138, 163, 0.09);
+}
+
+#cookie-settings h4 {
+  color: #5f8aa3;
+  font-size: var(--mobile-title-font);
+  margin-bottom: 1em;
+  font-weight: 300;
+  text-align: center;
+}
+
+.cookie-category {
+  margin: 1em 0;
+}
+
+#save-preferences {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 300;
+  font-size: 0.95em;
+  background: #5f8aa3;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5em 1.3em;
+  cursor: pointer;
+  margin-top: 1em;
+  width: 100%;
+  transition: background 0.2s;
+}
+
+@media (max-width: 600px) {
+  .banner-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6em;
+    max-width: 98vw;
+  }
+  .banner-text {
+    margin-right: 0;
+    font-size: 0.93em;
+  }
+  .buttons {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  #cookie-consent-banner .buttons button,
+  #cookie-consent-banner #save-preferences {
+    font-size: 0.85em;
+    padding: 0.26em 0.85em;
+  }
+}
+
+.cookie-category {
+  margin: 1rem 0;
+}
+
 :root {
   --primary-color: #5f8aa3;
   --secondary-color: #496b79;
