@@ -132,11 +132,9 @@ document.addEventListener("DOMContentLoaded", function () {
               .querySelectorAll(".dropdown-content")
               .forEach((el) => el.classList.remove("show"));
 
-            // Toggle: if it was not open, open it; if it was open, leave all closed
             if (!isOpen) {
               currentDropdown.classList.add("show");
             }
-            // If it was open, we already closed it above, so nothing else needed
           });
         });
     }

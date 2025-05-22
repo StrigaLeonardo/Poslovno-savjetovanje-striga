@@ -13,6 +13,10 @@ html {
   overflow-x: hidden;
 }
 
+main {
+  margin-top: 3em;
+}
+
 #cookie-consent-banner {
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 300;
