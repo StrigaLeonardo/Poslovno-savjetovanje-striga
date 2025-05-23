@@ -36,6 +36,9 @@
   margin-bottom: 1em;
   text-align: center;
   margin-top: 0;
+  font-size: 0.9em;
+  margin-left: 0.5em;
+  white-space: nowrap;
 }
 
 .contact-form-wrapper {
