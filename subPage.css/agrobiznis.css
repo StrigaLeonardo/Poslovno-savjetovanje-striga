@@ -124,6 +124,7 @@
   margin: 0;
   margin-bottom: 0.5em;
   margin-top: 1em;
+  min-height: 2.8em;
 }
 
 /* Service Card Description */
