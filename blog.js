@@ -427,7 +427,7 @@ function renderSingleBlog(blog) {
           <label>Datum:</label>
           <p class="roboto-light">${blog.date}</p>
           <label>Naslov:</label>
-          <p class="roboto-light">${blog.title}</p>
+          <p class="roboto-light blogger-title">${blog.title}</p>
         </div>
       </div>
       <div class="blog-content">
