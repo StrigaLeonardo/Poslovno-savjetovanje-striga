@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
       message: messageInput.value,
     };
 
-    emailjs.sendForm("service_1bbnsrf", "template_gbquibl", form).then(
+    emailjs.sendForm("service_ais3k2r", "template_gbquibl", form).then(
       function () {
         submitButton.textContent = "Zaprimljeno";
         setTimeout(() => {
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
         emailjs
-          .send("service_1bbnsrf", "template_5c2qqg7", userEmailParams)
+          .send("service_ais3k2r", "template_5c2qqg7", userEmailParams)
           .then(
             function () {
               console.log("Confirmation email sent successfully to the user.");
