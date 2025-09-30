@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const blogPreviewWrapper = document.querySelector(".blog-preview-wrapper");
   const logoutButton = document.getElementById("logout-button");
 
-  // Ensure the dashboard, blog preview, and logout button are hidden by default
+  // Dashboard, blog preview, and logout button are hidden by default
   loginModal.style.display = "flex";
   dashboardContent.style.display = "none";
   blogPreviewWrapper.style.display = "none";

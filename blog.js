@@ -32,10 +32,6 @@ if (storedPage) {
 
 // Preloader control functions
 
-/**
- * Ensures the preloader exists on the page.
- * If it doesn't exist, inject it with the necessary HTML structure.
- */
 function ensurePreloaderExists() {
   let preloader = document.getElementById("preloader");
   if (!preloader) {
@@ -461,7 +457,7 @@ function goBack() {
   }
 }
 
-// === Pagination Logic Integration ===
+// === Pagination Logic  ===
 
 // Function to create pagination
 function createPagination() {

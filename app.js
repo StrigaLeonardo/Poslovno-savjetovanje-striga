@@ -34,7 +34,46 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch("footer.html")
     .then((response) => response.text())
     .then((data) => {
-      document.querySelector("footer").innerHTML = data;
+      console.log("Loaded HTML:", data);
+
+      // Insert complete footer structure
+      document.querySelector("footer").innerHTML = `
+      <div class="page-footer">
+        ${data}
+      </div>
+    `;
+
+      console.log(
+        "Footer line after insert:",
+        document.querySelector(".footer-line")
+      );
+      console.log(
+        "Copyright after insert:",
+        document.querySelector(".copyright")
+      );
+
+      // ADD THIS: Initialize the back to top button AFTER HTML is loaded
+      const toTopBtn = document.querySelector(".to-top-btn");
+
+      if (toTopBtn) {
+        toTopBtn.addEventListener("click", function () {
+          // Smooth scroll to top
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+
+          // Remove focus from button
+          this.blur();
+        });
+
+        console.log("Event listener added to button"); // Debug line
+      } else {
+        console.log("Button not found!"); // Debug line
+      }
+    })
+    .catch((error) => {
+      console.error("Error loading footer:", error);
     });
 
   // Function to set up scroll listener

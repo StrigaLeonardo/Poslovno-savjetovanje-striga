@@ -2,24 +2,13 @@
   display: flex;
   justify-content: center;
   padding-left: 5em;
-  background-color: var(--primary-color);
+  background-color: var(--header-color);
   width: 100%;
   position: fixed;
   z-index: 10;
   box-sizing: border-box;
   transition: padding-top 0.5s ease-in-out, background-color 0.5s ease-in-out;
   border-bottom: solid 2px rgb(209, 209, 209);
-}
-
-.page-header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.322);
-  z-index: 0;
 }
 
 .header-container {
