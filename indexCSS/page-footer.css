@@ -240,6 +240,7 @@
   }
   .footer-title {
     white-space: nowrap;
+    font-size: 1.7em;
   }
 
   /* Policies + LinkedIn: keep horizontal */
@@ -266,7 +267,6 @@
   /* Back-to-top: push to bottom, centered */
   .footer-totop {
     order: 3;
-    margin-top: 1em;
   }
 
   /* Divider & copyright: full width */
@@ -277,69 +277,5 @@
     margin: 0.5em 0 1em;
     font-size: 0.9em;
     opacity: 0.8;
-  }
-
-  .footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 1em 1.5em;
-    gap: 1em;
-  }
-
-  .footer-col {
-    width: 100%;
-    margin: 0;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer-brandpolicies {
-    order: 1;
-  }
-  .footer-nav {
-    order: 2;
-  }
-  .footer-policies-col {
-    order: 3;
-  }
-  .footer-totop {
-    order: 4;
-  }
-
-  .footer-title {
-    white-space: nowrap;
-  }
-
-  .footer-policies-linkedin {
-    justify-content: center;
-    gap: 0.5em;
-  }
-
-  .footer-links-group {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5em;
-  }
-
-  .footer-line {
-    width: 100%;
-    margin: 1em 0 0;
-  }
-
-  .copyright {
-    margin: 0.5em 0 1em;
-    font-size: 0.9em;
-    opacity: 0.8;
-  }
-
-  /* Disable hover-only rules on touch */
-  .linkedin-btn:hover,
-  .to-top-btn:hover,
-  .footer-links-group a:hover {
-    /* no-op */
   }
 }

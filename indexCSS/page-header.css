@@ -155,29 +155,6 @@
     position: relative;
   }
 
-  .page-navigation {
-    position: fixed;
-    top: 60px;
-    right: 0;
-    left: auto;
-    background-color: #fff;
-    border-left: 1px solid #dcdcdc;
-    border-radius: 8px 0 0 8px;
-    width: 80vw;
-    max-width: 250px;
-    height: calc(100vh - 60px);
-    flex-direction: column;
-    gap: 0.5em;
-    padding: 1em 1em;
-    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.15);
-    z-index: 99;
-    transform: translateX(100%);
-    opacity: 0;
-    transition: transform 0.4s cubic-bezier(0.7, 0.3, 0.3, 1), opacity 0.3s;
-    max-height: none;
-    overflow-y: auto;
-  }
-
   .page-navigation.show {
     transform: translateX(0);
     opacity: 1;
@@ -221,118 +198,68 @@
     font-size: 1.2em;
   }
 
-  .page-navigation a {
-    font-size: 1em;
-    text-align: left;
-    color: #2c3e50;
-    text-decoration: none;
-    padding: 1em 0;
-    transition: background-color 0.3s, color 0.3s, font-weight 0.2s,
-      box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-      transform 0.18s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 8px;
-    margin-bottom: 0;
+  .page-navigation {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    width: 80vw;
+    max-width: 260px;
+    height: calc(100vh - 60px);
     background: #fff;
-    box-shadow: 0 2px 12px rgba(44, 50, 80, 0.13),
-      0 1.5px 6px rgba(44, 50, 80, 0.09);
-    position: relative;
-    font-family: "Roboto", Arial, sans-serif;
-    font-weight: 300;
-    letter-spacing: 0.01em;
-  }
-
-  .page-navigation a:not(:last-child)::after {
-    content: "";
-    display: block;
-    position: absolute;
-    left: 8%;
-    right: 8%;
-    bottom: 0;
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      rgba(205, 217, 232, 0) 0%,
-      rgba(205, 217, 232, 0.4) 50%,
-      rgba(205, 217, 232, 0) 100%
-    );
-    opacity: 0.8;
-  }
-
-  /* On hover, make text bolder and color accent */
-  .page-navigation a:hover {
-    background-color: #f5f5f5;
-    color: #5f8aa3;
-    font-weight: 500;
-  }
-
-  .page-navigation a > h3 {
-    font-family: "Roboto-light", Arial, sans-serif;
-    font-weight: 300; /* Roboto Light */
-    font-size: 1.35em; /* Make them bigger */
-    color: #000000;
-    margin: 0;
-    padding: 0.6em 1.2em;
-    transition: color 0.3s, background 0.3s;
-    letter-spacing: 0.03em;
-    border-radius: 6px;
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.15);
+    border-left: 1px solid #dcdcdc;
     display: flex;
-    align-items: center;
-    background: transparent;
-  }
-
-  .dropdown-content {
-    display: none;
-    position: relative;
-    top: 0;
-    background-color: #ffffff;
-    border: 1px solid #dcdcdc;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 1em 0;
-    width: 100%;
-    border-radius: 6px;
-    transition: all 0.4s ease;
-  }
-
-  .dropdown:hover .dropdown-content,
-  .dropdown-content.show {
-    display: block;
-  }
-
-  .dropdown-content a {
-    padding: 0.8em 1.5em;
-    font-size: 1em;
-    color: #333333;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-
-  .dropdown-content a:hover {
-    background-color: #f5f5f5;
-    color: #2c3e50;
-  }
-
-  .dropdown a {
-    font-size: 1em;
-    text-align: left;
-    display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 0.5em;
+    padding: 1em;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.7, 0.3, 0.3, 1), opacity 0.3s;
+    overflow-y: auto;
+    z-index: 10;
+  }
+  .page-navigation.show {
+    transform: translateX(0);
+    opacity: 1;
+    gap: 3em;
   }
 
-  .dropdown a svg {
-    transition: transform 0.3s ease;
-    fill: #333;
+  .page-navigation a {
+    color: #333;
+    text-decoration: none;
+    padding: 0em 1em;
+    border-left: solid 3px var(--primary-color);
+    font-size: 1.2em;
+    transition: background 0.3s, color 0.3s;
+    margin-top: 0.5em;
+  }
+  .page-navigation a h3 {
+    margin: 0;
+    font-weight: 300;
+    font-size: 1.1em;
+    color: #333;
+    padding: 0;
   }
 
-  .dropdown:click a svg {
-    transform: rotate(180deg);
+  .dropdown:hover .dropdown-content {
+    display: flex;
   }
-}
 
-@media (max-width: 768px) {
   .dropdown-content {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1em 1em;
   }
   .dropdown-content.show {
-    display: block;
+    display: flex;
+  }
+  .dropdown-content a {
+    padding: 0.6em 0.5em;
+    font-size: 1em;
+    color: #333;
+  }
+  .dropdown-content a:hover {
+    background: #f5f5f5;
   }
 }
