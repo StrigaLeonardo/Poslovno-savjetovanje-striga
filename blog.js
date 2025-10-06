@@ -457,28 +457,37 @@ function goBack() {
   }
 }
 
-// === Pagination Logic  ===
+// === Pagination (icons + a11y) ===
 
-// Function to create pagination
 function createPagination() {
   const paginationContainer = document.getElementById("pagination-container");
-  if (!paginationContainer) {
-    console.warn("Pagination container element not found.");
-    return;
-  }
+  if (!paginationContainer) return;
 
+  // Container setup
   paginationContainer.className = "pagination";
   paginationContainer.innerHTML = "";
 
   const totalPages = Math.ceil(blogs.length / cardsPerPage);
 
-  // Previous button
+  // SVG icons
+  const leftChevron = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+    </svg>`;
+  const rightChevron = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z"></path>
+    </svg>`;
+
+  // Previous
   const prev = document.createElement("a");
-  prev.className = "pagination-newer";
-  prev.textContent = "PRETHODNA";
+  prev.className = "pagination-prev";
   prev.href = "#";
-  prev.addEventListener("click", function (event) {
-    event.preventDefault();
+  prev.setAttribute("aria-label", "Prethodna stranica");
+  prev.innerHTML = leftChevron;
+  if (currentPage <= 1) prev.classList.add("is-disabled");
+  prev.addEventListener("click", (e) => {
+    e.preventDefault();
     if (currentPage > 1) {
       currentPage--;
       localStorage.setItem("currentPage", currentPage);
@@ -493,17 +502,19 @@ function createPagination() {
   for (let i = 1; i <= totalPages; i++) {
     const page = document.createElement("a");
     page.className = "page-number";
-    page.textContent = i;
-    page.setAttribute("data-page", i);
     page.href = "#";
+    page.setAttribute("data-page", i.toString());
+    page.setAttribute("aria-label", `Idi na stranicu ${i}`);
+    page.textContent = i.toString();
 
     if (i === currentPage) {
       page.classList.add("pagination-active");
+      page.setAttribute("aria-current", "page");
     }
 
-    page.addEventListener("click", function (event) {
-      event.preventDefault();
-      currentPage = parseInt(this.getAttribute("data-page"));
+    page.addEventListener("click", (e) => {
+      e.preventDefault();
+      currentPage = i;
       localStorage.setItem("currentPage", currentPage);
       renderCards();
       updatePaginationHighlight();
@@ -513,13 +524,15 @@ function createPagination() {
     paginationContainer.appendChild(page);
   }
 
-  // Next button
+  // Next
   const next = document.createElement("a");
-  next.className = "pagination-older";
-  next.textContent = "SLJEDEĆA";
+  next.className = "pagination-next";
   next.href = "#";
-  next.addEventListener("click", function (event) {
-    event.preventDefault();
+  next.setAttribute("aria-label", "Sljedeća stranica");
+  next.innerHTML = rightChevron;
+  if (currentPage >= totalPages) next.classList.add("is-disabled");
+  next.addEventListener("click", (e) => {
+    e.preventDefault();
     if (currentPage < totalPages) {
       currentPage++;
       localStorage.setItem("currentPage", currentPage);
@@ -533,28 +546,37 @@ function createPagination() {
   updatePaginationHighlight();
 }
 
-// Function to update pagination highlight
 function updatePaginationHighlight() {
   const pageNumbers = document.querySelectorAll(".page-number");
-
   pageNumbers.forEach((page) => {
-    if (parseInt(page.getAttribute("data-page")) === currentPage) {
+    const pageNum = parseInt(page.getAttribute("data-page"));
+    if (pageNum === currentPage) {
       page.classList.add("pagination-active");
+      page.setAttribute("aria-current", "page");
     } else {
       page.classList.remove("pagination-active");
+      page.removeAttribute("aria-current");
     }
   });
+
+  // Update disabled state of prev/next
+  const pagination = document.querySelector(".pagination");
+  const prev = pagination?.querySelector(".pagination-prev");
+  const next = pagination?.querySelector(".pagination-next");
+  const totalPages = Math.ceil(blogs.length / cardsPerPage);
+  if (prev) {
+    prev.classList.toggle("is-disabled", currentPage <= 1);
+  }
+  if (next) {
+    next.classList.toggle("is-disabled", currentPage >= totalPages);
+  }
 }
 
-// Function to scroll to top
 function scrollToTop() {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-// === End of Pagination Logic Integration ===
+// === End Pagination ===
 
 // Helpers (for homepage)
 function handleScrollToSection() {
