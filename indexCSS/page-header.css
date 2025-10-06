@@ -62,17 +62,6 @@
   border-bottom: 2px solid #cdd9e8;
 }
 
-.lang a:hover {
-  color: #afafaf;
-  border-bottom: none;
-}
-
-.lang {
-  font-size: 1em;
-  display: flex;
-  align-items: center;
-}
-
 .divider {
   width: 0.1em;
   height: 1em;
@@ -232,6 +221,10 @@
     margin-top: 1em;
     border-bottom: none;
   }
+  .page-navigation a {
+    border-bottom: none !important;
+  }
+
   .page-navigation a h3 {
     margin: 0;
     font-weight: 300;
