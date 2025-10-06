@@ -223,6 +223,7 @@
     text-align: center;
     padding: 1em 1.5em;
     gap: 1em;
+    padding-bottom: 0.2em;
   }
 
   .footer-brandpolicies,
@@ -234,7 +235,6 @@
     text-align: center;
   }
 
-  /* Brand: keep title on one line */
   .footer-brandpolicies {
     flex: 0 0 auto;
   }
@@ -243,7 +243,6 @@
     font-size: 1.7em;
   }
 
-  /* Policies + LinkedIn: keep horizontal */
   .footer-policies-linkedin {
     justify-content: center;
     flex-wrap: nowrap;
@@ -252,7 +251,6 @@
     gap: 0.5em;
   }
 
-  /* Navigation groups: three links per row */
   .footer-links-group {
     flex-direction: row;
     flex-wrap: wrap;
@@ -264,12 +262,6 @@
     font-size: 0.8em;
   }
 
-  /* Back-to-top: push to bottom, centered */
-  .footer-totop {
-    order: 3;
-  }
-
-  /* Divider & copyright: full width */
   .footer-line {
     margin: 1em 0 0;
   }

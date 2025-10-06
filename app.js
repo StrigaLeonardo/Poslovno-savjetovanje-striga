@@ -23,9 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
       setupHamburgerMenu();
 
       // Adjust main padding after header is loaded
-      adjustMainPadding();
+      adjustMainPadding?.();
 
-      // Correct dropdown behavior for USLUGE
+      // USLUGE dropdown behavior (mobile click toggle using .open)
       setupUslugeDropdown();
     });
 
@@ -56,26 +56,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // --- USLUGE Dropdown Functionality ---
   function setupUslugeDropdown() {
-    const uslugeLink = document.querySelector(".dropdown > a");
-    const dropdownContent = document.querySelector(".dropdown-content");
-    const pageNavigation = document.getElementById("page-navigation");
+    const nav = document.getElementById("page-navigation");
+    if (!nav) return;
 
-    if (!uslugeLink || !dropdownContent || !pageNavigation) return;
+    const dropdown = nav.querySelector(".dropdown");
+    if (!dropdown) return;
+
+    const uslugeLink =
+      dropdown.querySelector(":scope > a") || dropdown.querySelector("a");
+    const dropdownContent = dropdown.querySelector(".dropdown-content");
+    if (!uslugeLink || !dropdownContent) return;
 
     uslugeLink.addEventListener("click", function (e) {
-      e.preventDefault(); // Stop # from appearing in URL
-      dropdownContent.classList.toggle("show"); // Toggle dropdown open/close
+      e.preventDefault();
+      const isOpen = dropdown.classList.contains("open");
+      closeAll();
+      if (!isOpen) dropdown.classList.add("open");
     });
 
-    // Close dropdown if clicking anywhere in nav except USLUGE
-    pageNavigation.addEventListener("click", function (e) {
+    // Close when clicking in nav outside this dropdown
+    nav.addEventListener("click", function (e) {
       if (!e.target.closest(".dropdown")) {
-        dropdownContent.classList.remove("show");
+        closeAll();
+      }
+    });
+
+    // Close when clicking fully outside nav
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest("#page-navigation")) {
+        closeAll();
       }
     });
   }
 
-  // ---- Hamburger Menu (no dropdown interfering code) ----
+  // ---- Hamburger Menu ----
   function setupHamburgerMenu() {
     const headerContainer = document.querySelector(".header-container");
     const pageNavigation = document.getElementById("page-navigation");
@@ -118,9 +132,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (hamburgerMenu) hamburgerMenu.remove();
         pageNavigation.classList.remove("show");
         document.body.classList.remove("mobile-nav-open");
+        // Close any open dropdowns when leaving mobile
         pageNavigation
-          .querySelectorAll(".dropdown-content.show")
-          .forEach((el) => el.classList.remove("show"));
+          .querySelectorAll(".dropdown.open")
+          .forEach((el) => el.classList.remove("open"));
       }
     }
 
@@ -142,8 +157,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         // Close all dropdowns
         pageNavigation
-          .querySelectorAll(".dropdown-content")
-          .forEach((el) => el.classList.remove("show"));
+          .querySelectorAll(".dropdown")
+          .forEach((el) => el.classList.remove("open"));
       }
     });
 
@@ -152,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("resize", handleResize);
   }
 
-  // Scroll listener (unchanged)
+  // Scroll listener
   function setupScrollListener() {
     const header = document.querySelector(".page-header");
     const title = document.querySelector(".page-title");
@@ -168,15 +183,16 @@ document.addEventListener("DOMContentLoaded", function () {
         originalFontSize - scrollY * scaleFactor,
         0.7
       );
-      title.style.fontSize = newFontSize + "em";
+      if (title) title.style.fontSize = newFontSize + "em";
 
       if (scrollY > 0) {
-        header.classList.add("scrolled");
+        header?.classList.add("scrolled");
       } else {
-        header.classList.remove("scrolled");
-        title.style.fontSize = originalFontSize + "em";
+        header?.classList.remove("scrolled");
+        if (title) title.style.fontSize = originalFontSize + "em";
       }
       if (
+        profilePhoto &&
         isElementInViewport(profilePhoto, 250) &&
         !profilePhoto.classList.contains("slide-in-left")
       ) {
@@ -184,6 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
         profilePhoto.style.opacity = "1";
       }
       if (
+        profileText &&
         isElementInViewport(profileText, 250) &&
         !profileText.classList.contains("slide-in-right")
       ) {
@@ -193,19 +210,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Example: service card expansion
   document.querySelectorAll(".service-card-link").forEach((link) => {
     link.addEventListener("click", function (e) {
       e.preventDefault();
       const card = this.querySelector(".service-card");
-      card.classList.toggle("expanded");
+      card?.classList.toggle("expanded");
     });
   });
+
   window.addEventListener("load", function () {
     document.body.style.opacity = 1;
   });
 });
 
-// --- Cookie banner logic (unchanged) ---
+/* --- Cookie banner logic --- */
 document.addEventListener("DOMContentLoaded", function () {
   fetch("cookie-banner.html")
     .then((response) => response.text())
@@ -273,4 +292,17 @@ function loadAnalytics() {
   }
   gtag("js", new Date());
   gtag("config", "G-MB5LJKQK07");
+}
+
+/* Helper used by scroll logic; include if not present elsewhere */
+function isElementInViewport(el, offset = 0) {
+  if (!el) return false;
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top <=
+      (window.innerHeight || document.documentElement.clientHeight) - offset &&
+    rect.left >= 0 &&
+    rect.bottom >= 0 &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
 }
