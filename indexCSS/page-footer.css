@@ -7,7 +7,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  width: 100%; /* Ensure full width */
+  width: 100%;
 }
 
 .footer-content {
@@ -72,15 +72,14 @@
   width: auto;
   min-width: fit-content;
   margin-top: 1.5em;
-  flex: 1; /* Allow to grow */
+  flex: 1;
 }
 
-/* Back to top button column */
 .footer-totop {
   align-items: center;
   justify-content: center;
   min-width: auto;
-  flex-shrink: 0; /* Don't shrink */
+  flex-shrink: 0;
 }
 
 .to-top-btn {
@@ -269,5 +268,19 @@
     margin: 0.5em 0 1em;
     font-size: 0.9em;
     opacity: 0.8;
+  }
+
+  .to-top-btn:focus {
+    outline: none;
+  }
+  .to-top-btn:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+  @media (hover: none) {
+    .to-top-btn:hover {
+      background: inherit;
+      color: inherit;
+    }
   }
 }

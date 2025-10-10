@@ -339,13 +339,11 @@
   color: #333;
 }
 
-/* Numbered pages: keep circular layout for numbers too */
 .pagination .page-number {
   font-size: 0.95em;
   font-weight: 400;
 }
 
-/* Prev/Next spacing if desired */
 .pagination .pagination-prev {
   margin-right: 0.4em;
 }
@@ -360,24 +358,6 @@
   pointer-events: none;
 }
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .pagination {
-    gap: 0.3em;
-  }
-  .pagination a,
-  .pagination button {
-    width: 38px;
-    height: 38px;
-  }
-  .pagination a svg,
-  .pagination button svg {
-    width: 18px;
-    height: 18px;
-  }
-}
-
-/* Mobile View Adjustments */
 @media (max-width: 768px) {
   .pagination-container {
     margin: 2em auto 2em auto;

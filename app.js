@@ -34,19 +34,19 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((response) => response.text())
     .then((data) => {
       document.querySelector("footer").innerHTML = `
-        <div class="page-footer">
-          ${data}
-        </div>
-      `;
+      <div class="page-footer">
+        ${data}
+      </div>
+    `;
       // Back to top button initialization
       const toTopBtn = document.querySelector(".to-top-btn");
       if (toTopBtn) {
         toTopBtn.addEventListener("click", function () {
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          });
-          this.blur();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          this.blur(); // blur immediately
+          requestAnimationFrame(() => {
+            this.blur();
+          }); // blur again next frame
         });
       }
     })
@@ -89,76 +89,90 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // ---- Hamburger Menu ----
+  // ---- Hamburger Menu (centralized state) ----
   function setupHamburgerMenu() {
     const headerContainer = document.querySelector(".header-container");
     const pageNavigation = document.getElementById("page-navigation");
     if (!headerContainer || !pageNavigation) return;
 
-    function createHamburgerMenu() {
-      const hamburgerMenu = document.createElement("button");
-      hamburgerMenu.classList.add("hamburger-menu");
-      hamburgerMenu.setAttribute("aria-label", "Otvori navigaciju");
-      hamburgerMenu.innerHTML = `
-        <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#cdd9e8">
-          <path d="M120-240v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/>
-        </svg>
-        <svg class="close-icon hidden" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#cdd9e8">
-          <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
-        </svg>
-      `;
-      headerContainer.insertBefore(hamburgerMenu, pageNavigation);
+    function ensureIcons(open) {
+      const hamburgerMenu = document.querySelector(".hamburger-menu");
+      if (!hamburgerMenu) return;
+      const hamburgerIcon = hamburgerMenu.querySelector(".hamburger-icon");
+      const closeIcon = hamburgerMenu.querySelector(".close-icon");
+      if (!hamburgerIcon || !closeIcon) return;
+      hamburgerIcon.classList.toggle("hidden", open); // open => hide hamburger
+      closeIcon.classList.toggle("hidden", !open); // open => show close
+    }
 
-      hamburgerMenu.addEventListener("click", function (e) {
+    function openMenu() {
+      pageNavigation.classList.add("show");
+      document.body.classList.add("mobile-nav-open");
+      ensureIcons(true);
+    }
+
+    function closeMenu() {
+      pageNavigation.classList.remove("show");
+      document.body.classList.remove("mobile-nav-open");
+      ensureIcons(false);
+    }
+
+    function createHamburgerMenu() {
+      if (document.querySelector(".hamburger-menu")) return;
+      const btn = document.createElement("button");
+      btn.classList.add("hamburger-menu");
+      btn.setAttribute("aria-label", "Otvori navigaciju");
+      btn.innerHTML = `
+      <svg class="hamburger-icon" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#cdd9e8">
+        <path d="M120-240v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/>
+      </svg>
+      <svg class="close-icon hidden" xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#cdd9e8">
+        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+      </svg>
+    `;
+      headerContainer.insertBefore(btn, pageNavigation);
+
+      btn.addEventListener("click", (e) => {
         e.stopPropagation();
-        pageNavigation.classList.toggle("show");
-        document.body.classList.toggle("mobile-nav-open");
-        const hamburgerIcon = this.querySelector(".hamburger-icon");
-        const closeIcon = this.querySelector(".close-icon");
-        hamburgerIcon.classList.toggle("hidden");
-        closeIcon.classList.toggle("hidden");
+        const opening = !pageNavigation.classList.contains("show");
+        if (opening) openMenu();
+        else closeMenu();
       });
     }
 
     function handleResize() {
       if (window.innerWidth <= 768) {
-        if (!document.querySelector(".hamburger-menu")) {
-          createHamburgerMenu();
-        }
-        pageNavigation.classList.remove("show");
-        document.body.classList.remove("mobile-nav-open");
+        createHamburgerMenu();
+        // Ensure consistent state when entering mobile
+        closeMenu();
       } else {
-        const hamburgerMenu = document.querySelector(".hamburger-menu");
-        if (hamburgerMenu) hamburgerMenu.remove();
+        document.querySelector(".hamburger-menu")?.remove();
+        // Desktop never shows mobile menu or icons
         pageNavigation.classList.remove("show");
         document.body.classList.remove("mobile-nav-open");
-        // Close any open dropdowns when leaving mobile
+      }
+    }
+
+    // Close when clicking outside (mobile only)
+    document.addEventListener("click", (e) => {
+      if (window.innerWidth > 768) return;
+      const clickedOutside =
+        !e.target.closest(".page-navigation") &&
+        !e.target.closest(".hamburger-menu");
+      if (clickedOutside) {
+        closeMenu();
+        // Close any open dropdowns too
         pageNavigation
           .querySelectorAll(".dropdown.open")
           .forEach((el) => el.classList.remove("open"));
       }
-    }
+    });
 
-    // Close menu when clicking outside (for mobile only)
-    document.addEventListener("click", function (e) {
+    // Close on scroll (mobile only) and reset icons
+    window.addEventListener("scroll", () => {
       if (window.innerWidth > 768) return;
-      if (
-        !e.target.closest(".page-navigation") &&
-        !e.target.closest(".hamburger-menu")
-      ) {
-        pageNavigation.classList.remove("show");
-        document.body.classList.remove("mobile-nav-open");
-        const hamburgerMenu = document.querySelector(".hamburger-menu");
-        if (hamburgerMenu) {
-          hamburgerMenu
-            .querySelector(".hamburger-icon")
-            .classList.remove("hidden");
-          hamburgerMenu.querySelector(".close-icon").classList.add("hidden");
-        }
-        // Close all dropdowns
-        pageNavigation
-          .querySelectorAll(".dropdown")
-          .forEach((el) => el.classList.remove("open"));
+      if (pageNavigation.classList.contains("show")) {
+        closeMenu();
       }
     });
 
