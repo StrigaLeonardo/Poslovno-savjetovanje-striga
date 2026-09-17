@@ -36,17 +36,142 @@
     <header></header>
 
     <main>
+      <section class="app-menu">
+        <div class="app-menu-wrapper">
+          <div class="app-menu-items">
+            <div class="app-menu-card" data-view="create">
+              <div class="app-menu-header">
+                <div class="app-menu-icon">
+                  <svg
+                    width="48px"
+                    height="48px"
+                    viewBox="0 0 21 21"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g
+                      fill="none"
+                      fill-rule="evenodd"
+                      stroke="#f9f9f9"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      transform="translate(3 3)"
+                    >
+                      <path
+                        d="m7 1.5h-4.5c-1.1045695 0-2 .8954305-2 2v9.0003682c0 1.1045695.8954305 2 2 2h10c1.1045695 0 2-.8954305 2-2v-4.5003682"
+                      />
+
+                      <path
+                        d="m14.5.46667982c.5549155.5734054.5474396 1.48588056-.0167966 2.05011677l-6.9832034 6.98320341-3 1 1-3 6.9874295-7.04563515c.5136195-.5178979 1.3296676-.55351813 1.8848509-.1045243z"
+                      />
+
+                      <path d="m12.5 2.5.953 1" />
+                    </g>
+                  </svg>
+                </div>
+                <h2 class="app-menu-card-title">Create blog</h2>
+              </div>
+              <p class="app-menu-card-subtitle">
+                Create a new blog post with editor and preview.
+              </p>
+            </div>
+
+            <div class="app-menu-card" data-view="blog-table">
+              <div class="app-menu-header">
+                <div class="app-menu-icon">
+                  <svg
+                    width="48px"
+                    height="48px"
+                    viewBox="0 0 21 21"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g
+                      fill="none"
+                      fill-rule="evenodd"
+                      stroke="#f9f9f9"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      transform="translate(3 3)"
+                    >
+                      <path
+                        d="m2.5.5h10c1.1045695 0 2 .8954305 2 2v10c0 1.1045695-.8954305 2-2 2h-10c-1.1045695 0-2-.8954305-2-2v-10c0-1.1045695.8954305-2 2-2z"
+                      />
+
+                      <path
+                        d="m2.5 2.5h10c1.1045695 0 2 .8954305 2 2v-2c0-1-.8954305-2-2-2h-10c-1.1045695 0-2 1-2 2v2c0-1.1045695.8954305-2 2-2z"
+                        fill="#f9f9f9"
+                      />
+
+                      <path d="m4.498 7.5h1" />
+
+                      <path d="m4.498 5.5h3.997" />
+
+                      <path d="m4.498 9.5h5.997" />
+
+                      <path d="m4.498 11.5h3.997" />
+                    </g>
+                  </svg>
+                </div>
+                <h2 class="app-menu-card-title">Blog storage</h2>
+              </div>
+              <p class="app-menu-card-subtitle">
+                View, edit and delete existing blog posts.
+              </p>
+            </div>
+
+            <div class="app-menu-card" data-view="blog-table">
+              <div class="app-menu-header">
+                <div class="app-menu-icon">
+                  <svg
+                    width="48px"
+                    height="48px"
+                    viewBox="0 0 21 21"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g
+                      fill="none"
+                      fill-rule="evenodd"
+                      stroke="#f9f9f9"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      transform="translate(3 3)"
+                    >
+                      <path
+                        d="m2.5.5h10c1.1045695 0 2 .8954305 2 2v10c0 1.1045695-.8954305 2-2 2h-10c-1.1045695 0-2-.8954305-2-2v-10c0-1.1045695.8954305-2 2-2z"
+                      />
+
+                      <path
+                        d="m2.5 2.5h10c1.1045695 0 2 .8954305 2 2v-2c0-1-.8954305-2-2-2h-10c-1.1045695 0-2 1-2 2v2c0-1.1045695.8954305-2 2-2z"
+                        fill="#f9f9f9"
+                      />
+
+                      <path d="m4.498 7.5h1" />
+
+                      <path d="m4.498 5.5h3.997" />
+
+                      <path d="m4.498 9.5h5.997" />
+
+                      <path d="m4.498 11.5h3.997" />
+                    </g>
+                  </svg>
+                </div>
+                <h2 class="app-menu-card-title">Website editor</h2>
+              </div>
+              <p class="app-menu-card-subtitle">
+                View and edit Titles, Text and Images.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="dashboard-wrapper">
         <!-- Dashboard Form -->
         <div class="dashboard-form-wrapper" id="dashboard-content">
           <form id="blog-post-form" class="dashboard-form">
-            <h2 class="dashboard-title roboto-light">Novi blog</h2>
-            <p class="dashboard-subtitle roboto-light">
-              Ispuni podatke za novi blog.
-            </p>
+            <h2 class="dashboard-title roboto-light">Blog editor</h2>
 
             <div class="form-group roboto-light">
-              <label for="title">Title<span class="required">*</span>:</label>
+              <label for="title">Title</label>
               <input
                 type="text"
                 id="title"
@@ -57,9 +182,7 @@
             </div>
 
             <div class="form-group roboto-light">
-              <label for="description"
-                >Description<span class="required">*</span>:</label
-              >
+              <label for="description">Description</label>
               <textarea
                 id="description"
                 name="description"
@@ -70,12 +193,12 @@
             </div>
 
             <div class="form-group roboto-light">
-              <label for="date">Date<span class="required">*</span>:</label>
+              <label for="date">Date</label>
               <input type="date" id="date" name="date" required />
             </div>
 
             <div class="form-group roboto-light">
-              <label for="image">Image<span class="required">*</span>:</label>
+              <label for="image">Image</label>
               <input
                 type="file"
                 id="image"
@@ -86,9 +209,7 @@
             </div>
 
             <div class="form-group roboto-light">
-              <label for="content"
-                >Content<span class="required">*</span>:</label
-              >
+              <label for="content">Content</label>
               <div id="editor"></div>
             </div>
 
@@ -106,7 +227,7 @@
 
         <!-- Blog Preview -->
         <div class="blog-preview-wrapper">
-          <h2 class="roboto-light">Live Preview</h2>
+          <h2 class="roboto-light">Blog card preview</h2>
           <div class="blog-preview">
             <a class="card-link">
               <div class="custom-post">
@@ -119,7 +240,9 @@
                 </div>
                 <div class="custom-body-post">
                   <div class="custom-post-content">
-                    <h1 id="preview-title" class="roboto-light">Blog Title</h1>
+                    <h1 id="preview-title" class="roboto-light">
+                      Blog title will appear here.
+                    </h1>
                     <p id="preview-description" class="roboto-light">
                       Blog description will appear here.
                     </p>
@@ -137,10 +260,42 @@
         </div>
       </section>
 
+      <!-- BLOG TABLE SECTION -->
+      <section
+        id="blog-table-section"
+        class="blog-table-container"
+        style="display: none"
+      >
+        <div class="blog-table-wrapper">
+          <div class="table-header">
+            <h2 class="roboto-light">Blog Management</h2>
+          </div>
+          <div class="table-wrapper">
+            <table class="blog-table">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Date</th>
+                  <th>Description</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="blog-table-body">
+                <!-- Filled by JS -->
+              </tbody>
+            </table>
+          </div>
+          <div id="table-empty" class="table-empty">No blog posts found.</div>
+          <div id="table-loading" class="table-loading" style="display: none">
+            Loading...
+          </div>
+        </div>
+      </section>
+
       <!-- Login Modal -->
       <div id="login-modal" class="modal">
         <div class="modal-content">
-          <h2>Login</h2>
+          <h2>Authentication</h2>
           <form id="login-form">
             <input type="email" id="email" placeholder="Email" required />
             <input
@@ -149,7 +304,7 @@
               placeholder="Password"
               required
             />
-            <button type="submit">Login</button>
+            <button type="submit">Log In</button>
           </form>
           <p id="error-message" class="error-message"></p>
         </div>
@@ -163,8 +318,9 @@
 
     <!-- JavaScript Files -->
     <script src="app.js"></script>
-    <script type="module" src="blog.js"></script>
     <script type="module" src="dashboard.js"></script>
+    <script type="module" src="blog.js"></script>
+
     <script type="module" src="dash-login.js"></script>
   </body>
 </html>

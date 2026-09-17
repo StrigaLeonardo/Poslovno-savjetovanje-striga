@@ -11,6 +11,10 @@ import {
   collection,
   serverTimestamp,
   Timestamp,
+  query,
+  orderBy,
+  getDocs,
+  deleteDoc,
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 import {
   getStorage,
@@ -29,12 +33,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const dashboardContent = document.getElementById("dashboard-content");
   const blogPreviewWrapper = document.querySelector(".blog-preview-wrapper");
   const logoutButton = document.getElementById("logout-button");
+  const logoutButtonWrapper = document.querySelector(".button");
+  const footer = document.querySelector("footer");
+  const appMenu = document.querySelector(".app-menu");
+  const blogTableSection = document.getElementById("blog-table-section");
+  const backToMenuTable = document.getElementById("back-to-menu-table");
 
-  // Dashboard, blog preview, and logout button are hidden by default
+  // Initial state
+  appMenu.style.display = "none";
+  footer.style.display = "none";
   loginModal.style.display = "flex";
   dashboardContent.style.display = "none";
   blogPreviewWrapper.style.display = "none";
-  logoutButton.style.display = "none";
+  logoutButtonWrapper.style.display = "none";
+  if (blogTableSection) blogTableSection.style.display = "none";
 
   onAuthStateChanged(auth, async (user) => {
     if (user) {
@@ -42,13 +54,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const userDocRef = doc(db, "users", user.uid);
         const userDoc = await getDoc(userDocRef);
 
-        console.log("User document data:", userDoc.data()); // Debug log
-
+        console.log("User document data:", userDoc.data());
         if (userDoc.exists() && userDoc.data().isAdmin) {
           loginModal.style.display = "none";
-          dashboardContent.style.display = "block";
-          blogPreviewWrapper.style.display = "block";
-          logoutButton.style.display = "block";
+          logoutButtonWrapper.style.display = "flex";
+          footer.style.display = "block";
+          appMenu.style.display = "block";
           initializeDashboard();
         } else {
           throw new Error("Unauthorized access: User is not an admin.");
@@ -57,34 +68,36 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Authorization error:", error.message);
         alert("Unauthorized access. Please contact an administrator.");
         await signOut(auth);
-        loginModal.style.display = "flex";
-        dashboardContent.style.display = "none";
-        blogPreviewWrapper.style.display = "none";
-        logoutButton.style.display = "none";
+        resetToLogin();
       }
     } else {
-      loginModal.style.display = "flex";
-      dashboardContent.style.display = "none";
-      blogPreviewWrapper.style.display = "none";
-      logoutButton.style.display = "none";
+      resetToLogin();
     }
   });
 
-  // Add logout functionality
+  // Logout handler
   if (logoutButton) {
     logoutButton.addEventListener("click", async () => {
       try {
         await signOut(auth);
         alert("You have been logged out successfully.");
-        loginModal.style.display = "flex";
-        dashboardContent.style.display = "none";
-        blogPreviewWrapper.style.display = "none";
-        logoutButton.style.display = "none";
+        resetToLogin();
       } catch (error) {
         console.error("Logout failed:", error);
         alert("An error occurred while logging out. Please try again.");
       }
     });
+  }
+
+  // Reset to login state
+  function resetToLogin() {
+    loginModal.style.display = "flex";
+    dashboardContent.style.display = "none";
+    blogPreviewWrapper.style.display = "none";
+    logoutButtonWrapper.style.display = "none";
+    appMenu.style.display = "none";
+    if (blogTableSection) blogTableSection.style.display = "none";
+    footer.style.display = "none";
   }
 
   // Initialize Dashboard Functions
@@ -123,6 +136,10 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Error initializing CKEditor:", error);
       });
 
+    const appMenu = document.querySelector(".app-menu");
+    const appMenuCards = document.querySelectorAll(".app-menu-card");
+    const dashboardWrapper = document.querySelector(".dashboard-wrapper");
+
     const titleInput = document.getElementById("title");
     const descriptionInput = document.getElementById("description");
     const dateInput = document.getElementById("date");
@@ -132,6 +149,69 @@ document.addEventListener("DOMContentLoaded", () => {
     const previewDescription = document.getElementById("preview-description");
     const previewDate = document.getElementById("preview-date");
     const previewImage = document.getElementById("preview-image");
+
+    // Track menu state
+    let isMenuVisible = true;
+
+    // App menu card listeners
+    appMenuCards.forEach((card) => {
+      card.style.cursor = "pointer";
+      card.addEventListener("click", () => {
+        if (isMenuVisible) {
+          appMenu.style.display = "none";
+
+          // Check which card was clicked
+          if (card.dataset.view === "blog-table") {
+            if (blogTableSection) {
+              blogTableSection.style.display = "block";
+              dashboardWrapper.style.display = "none";
+              loadBlogTable();
+            }
+          } else {
+            // Default to editor view
+            dashboardWrapper.style.display = "flex";
+            dashboardContent.style.display = "block";
+            blogPreviewWrapper.style.display = "block";
+          }
+
+          isMenuVisible = false;
+
+          // Guard pushState to avoid duplicates
+          if (!history.state || history.state.view !== "dashboard") {
+            history.pushState({ view: "dashboard" }, "", window.location.href);
+          }
+        }
+      });
+    });
+
+    // Back to menu from table
+    if (backToMenuTable) {
+      backToMenuTable.addEventListener("click", () => {
+        if (blogTableSection) blogTableSection.style.display = "none";
+        appMenu.style.display = "block";
+        isMenuVisible = true;
+      });
+    }
+
+    // Handle browser back/forward buttons
+    window.addEventListener("popstate", (event) => {
+      // Simplified: do not pushState here, just react to state
+      if (event.state?.view === "dashboard") {
+        appMenu.style.display = "none";
+
+        dashboardWrapper.style.display = "flex";
+        dashboardContent.style.display = "block";
+        blogPreviewWrapper.style.display = "block";
+        if (blogTableSection) blogTableSection.style.display = "none";
+        isMenuVisible = false;
+      } else {
+        // Default: show menu
+        appMenu.style.display = "block";
+        dashboardWrapper.style.display = "none";
+        if (blogTableSection) blogTableSection.style.display = "none";
+        isMenuVisible = true;
+      }
+    });
 
     // Update title in preview
     titleInput.addEventListener("input", () => {
@@ -174,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document
       .getElementById("blog-post-form")
       .addEventListener("submit", async function (e) {
-        e.preventDefault(); // Prevent default form submission
+        e.preventDefault();
 
         try {
           // Get Form Values
@@ -211,18 +291,18 @@ document.addEventListener("DOMContentLoaded", () => {
           // Convert Date to Timestamp
           const date = new Date(dateInputValue);
 
-          // Disable Submit Button to Prevent Multiple Submissions
+          // Disable Submit Button
           const submitButton = document.querySelector(".send-button");
           submitButton.disabled = true;
           submitButton.textContent = "Publishing...";
 
-          // Generate a unique filename to avoid collisions
+          // Generate unique filename
           const uniqueFileName = `${Date.now()}_${imageFile.name}`;
 
           // Upload Image to Firebase Storage
           const imageStorageRef = storageRef(
             storage,
-            `blog-images/${uniqueFileName}`
+            `blog-images/${uniqueFileName}`,
           );
           await uploadBytes(imageStorageRef, imageFile);
 
@@ -234,15 +314,15 @@ document.addEventListener("DOMContentLoaded", () => {
             title: title,
             description: description,
             date: Timestamp.fromDate(date),
-            image: `blog-images/${uniqueFileName}`, // Storage Path
-            imageUrl: imageUrl, // Download URL
-            content: sanitizedContent, // Sanitized HTML content
+            image: `blog-images/${uniqueFileName}`,
+            imageUrl: imageUrl,
+            content: sanitizedContent,
             createdAt: serverTimestamp(),
           });
 
           // Reset Form and Notify User
           document.getElementById("blog-post-form").reset();
-          window.editor.setData(""); // Clear CKEditor content
+          window.editor.setData("");
           previewTitle.textContent = "Blog Title";
           previewDescription.textContent = "Blog description will appear here.";
           previewDate.textContent = "No date selected";
@@ -251,7 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (error) {
           console.error("Error publishing blog post:", error);
           alert(
-            "An error occurred while publishing the blog post. Please try again."
+            "An error occurred while publishing the blog post. Please try again.",
           );
         } finally {
           // Re-enable Submit Button
@@ -260,5 +340,85 @@ document.addEventListener("DOMContentLoaded", () => {
           submitButton.textContent = "Publish Blog Post";
         }
       });
+  }
+
+  // Load and display blogs in table
+  async function loadBlogTable() {
+    const tableBody = document.getElementById("blog-table-body");
+    const tableEmpty = document.getElementById("table-empty");
+    const tableLoading = document.getElementById("table-loading");
+
+    if (!tableBody || !tableEmpty || !tableLoading) return;
+
+    tableLoading.style.display = "flex";
+    tableEmpty.style.display = "none";
+    tableBody.innerHTML = "";
+
+    try {
+      const blogsRef = collection(db, "blogs");
+      const q = query(blogsRef, orderBy("date", "desc"));
+      const snapshot = await getDocs(q);
+
+      tableLoading.style.display = "none";
+
+      if (snapshot.empty) {
+        tableEmpty.style.display = "block";
+        return;
+      }
+
+      snapshot.forEach((docSnap) => {
+        const data = docSnap.data();
+        const id = docSnap.id;
+
+        const date = data.date?.toDate
+          ? data.date.toDate().toLocaleDateString("hr-HR", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })
+          : "No date";
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td class="blog-table-title">${data.title || "(No title)"}</td>
+          <td class="blog-table-date">${date}</td>
+          <td class="blog-table-desc">${
+            data.description
+              ? data.description.substring(0, 100) +
+                (data.description.length > 100 ? "..." : "")
+              : ""
+          }</td>
+          <td class="table-actions">
+            <button class="btn-delete" data-id="${id}">Delete</button>
+          </td>
+        `;
+
+        tableBody.appendChild(row);
+      });
+
+      // Add delete listeners to all buttons
+      document.querySelectorAll(".btn-delete").forEach((btn) => {
+        btn.addEventListener("click", async (e) => {
+          const blogId = e.target.dataset.id;
+          if (confirm("Delete this blog post permanently?")) {
+            try {
+              await deleteDoc(doc(db, "blogs", blogId));
+              e.target.closest("tr").remove();
+              if (tableBody.children.length === 0) {
+                tableEmpty.style.display = "block";
+              }
+            } catch (error) {
+              console.error("Delete failed:", error);
+              alert("Failed to delete blog post. Please try again.");
+            }
+          }
+        });
+      });
+    } catch (error) {
+      console.error("Error loading blogs:", error);
+      tableLoading.style.display = "none";
+      tableEmpty.textContent = "Error loading blogs. Please refresh.";
+      tableEmpty.style.display = "block";
+    }
   }
 });

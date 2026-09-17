@@ -53,6 +53,12 @@
     max-width: 90%;
   }
 
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1em;
+  }
+
   .contact-us-title {
     font-size: var(--title-font);
     display: block;

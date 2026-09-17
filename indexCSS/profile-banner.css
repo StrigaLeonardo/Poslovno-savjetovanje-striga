@@ -123,12 +123,11 @@
     margin: 0em auto;
   }
 
-  @media (max-width: 768px) {
-    .profile-a {
-      display: inline-block;
-      margin-top: 1.2em;
-      text-align: right;
-      position: static;
-    }
+  .profile-a {
+    display: block;
+    width: 90%;
+    text-align: right;
+    margin-top: 1.2em;
+    position: static;
   }
 }

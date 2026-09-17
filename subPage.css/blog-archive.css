@@ -242,6 +242,7 @@
   .blog-header {
     max-width: 90%;
     box-sizing: border-box;
+    padding-top: 2em;
   }
 
   .pagination {
@@ -282,21 +283,22 @@
 }
 
 .pagination {
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 0.4em;
-  margin-bottom: 2em;
+  gap: 10px;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
-/* Base button: circular, icon-centered */
 .pagination a,
 .pagination button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px; /* equal width/height makes a circle */
+  width: 40px;
   height: 40px;
-  border-radius: 9999px; /* fully rounded */
+  border-radius: 9999px;
   border: 2px solid var(--primary-color);
   color: var(--primary-color);
   text-decoration: none;
@@ -306,7 +308,7 @@
   transition: background-color 0.2s ease, transform 0.1s ease;
   box-shadow: none;
   line-height: 1;
-  padding: 0; /* icons centered cleanly */
+  padding: 0;
 }
 
 /* Icon size inside buttons */
@@ -400,7 +402,7 @@
     margin: 0;
     box-shadow: 0 2px 12px rgba(44, 50, 80, 0.11);
     overflow: hidden;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
   }
   #latest-blog-container .blog-scroll-wrapper::-webkit-scrollbar {
     display: none;
@@ -419,6 +421,15 @@
 
   #latest-blog-container .custom-container {
     padding: 0;
+  }
+
+  #latest-blog-container {
+    padding-bottom: 1em;
+    margin-bottom: 0em;
+  }
+
+  .blog-header-home {
+    margin-top: 2em;
   }
 }
 @media (min-width: 901px) {

@@ -113,6 +113,10 @@
 }
 
 @media (max-width: 900px) {
+  .services-section {
+    padding: 2em 0;
+  }
+
   .services-cards-container {
     flex-direction: column;
     gap: 1.5em;

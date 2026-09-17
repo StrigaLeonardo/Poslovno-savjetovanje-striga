@@ -198,19 +198,18 @@
     border-left: 1px solid #dcdcdc;
     display: flex;
     flex-direction: column;
-    gap: 0.5em;
-    padding: 1em;
     transform: translateX(100%);
     opacity: 0;
     transition: transform 0.4s cubic-bezier(0.7, 0.3, 0.3, 1), opacity 0.3s;
     overflow-y: auto;
     z-index: 10;
+    gap: 3em;
+    padding: 1.5em 1em;
+    padding-top: 2em;
   }
   .page-navigation.show {
     transform: translateX(0);
     opacity: 1;
-    gap: 3em;
-    padding-top: 2em;
   }
 
   .page-navigation a {
