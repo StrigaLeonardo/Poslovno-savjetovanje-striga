@@ -1,0 +1,292 @@
+.page-footer {
+  background: var(--header-color);
+  border-top: 2px solid #d1d1d1;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 300;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.footer-content {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 1em 1.5em 0.5em 1.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5em;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-line {
+  width: 100%;
+  height: 2px;
+  background: #d1d1d1;
+  margin: 0.2em 0 0 0;
+  opacity: 0.5;
+  display: block;
+  flex-shrink: 0;
+}
+
+.copyright {
+  color: rgb(191, 191, 191);
+  text-align: center;
+  font-size: 1em;
+  margin: 0;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 300;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.copyright p {
+  margin-bottom: 0;
+  margin-top: 0.5em;
+  padding-bottom: 0.2em;
+}
+
+/* Footer columns */
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.footer-brandpolicies {
+  align-items: flex-start;
+  justify-content: center;
+  flex: 1;
+  max-width: 270px;
+}
+
+.footer-nav {
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 1.1em;
+  width: auto;
+  min-width: fit-content;
+  margin-top: 1.5em;
+  flex: 1;
+}
+
+.footer-totop {
+  align-items: center;
+  justify-content: center;
+  min-width: auto;
+  flex-shrink: 0;
+}
+
+.to-top-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid var(--off-white);
+  box-sizing: border-box;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.to-top-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.to-top-arrow {
+  transition: stroke 0.2s;
+}
+
+.to-top-btn:hover,
+.to-top-btn:focus {
+  background: var(--off-white);
+}
+
+.to-top-btn:hover .to-top-arrow,
+.to-top-btn:focus .to-top-arrow {
+  stroke: var(--primary-color);
+}
+
+/* Rest of your existing styles... */
+.footer-title {
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 300;
+  font-size: 2em;
+  color: #cdd9e8;
+  text-decoration: none;
+  transition: color 0.2s;
+  margin-bottom: 0.3em;
+}
+
+.footer-title:hover {
+  color: #fff;
+}
+
+.footer-policies-linkedin {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-top: 0.2em;
+}
+
+.footer-policies {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+}
+
+.footer-policies a {
+  color: #cdd9e8;
+  font-size: 0.8em;
+  text-decoration: none;
+  font-weight: 300;
+  padding: 0.1em 0.1em 0.1em 0;
+  border-radius: 5px;
+  transition: color 0.2s;
+}
+
+.footer-policies a:hover {
+  color: #fff;
+}
+
+.linkedin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  font-family: "Roboto", Arial, sans-serif;
+  font-weight: 400;
+  outline: none;
+  cursor: pointer;
+}
+
+.linkedin-btn svg:hover,
+.linkedin-btn svg:focus {
+  fill: #fff;
+}
+
+.linkedin-btn svg {
+  fill: #cdd9e8;
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  background: transparent;
+  transition: fill 0.2s;
+}
+
+.footer-links-group {
+  display: flex;
+  flex-direction: row;
+  min-width: 120px;
+  margin-bottom: 0.5em;
+  gap: 0.15em;
+}
+
+.footer-nav a {
+  color: #cdd9e8;
+  text-decoration: none;
+  border-radius: 6px;
+  padding: 0.18em 0.85em;
+  transition: color 0.2s;
+  font-weight: 300;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 0.2em;
+  padding-left: 0;
+}
+
+.footer-nav a:hover,
+.footer-nav a:focus {
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1em 1.5em;
+    gap: 1em;
+    padding-bottom: 0.2em;
+  }
+
+  .footer-brandpolicies,
+  .footer-nav,
+  .footer-totop {
+    width: 100%;
+    margin: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-brandpolicies {
+    flex: 0 0 auto;
+  }
+
+  .footer-title {
+    white-space: nowrap;
+    font-size: 1.7em;
+  }
+
+  .footer-policies-linkedin {
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+
+  .footer-policies {
+    gap: 0.5em;
+  }
+
+  .footer-links-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0em;
+  }
+
+  .footer-links-group a {
+    padding: 0.2em 0.85em;
+    font-size: 0.8em;
+  }
+
+  .footer-line {
+    margin: 1em 0 0;
+  }
+
+  .copyright {
+    margin: 0.5em 0 1em;
+    font-size: 0.9em;
+    opacity: 0.8;
+  }
+
+  .to-top-btn:focus {
+    outline: none;
+  }
+
+  .to-top-btn:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+
+  @media (hover: none) {
+    .to-top-btn:hover {
+      background: inherit;
+      color: inherit;
+    }
+  }
+}
