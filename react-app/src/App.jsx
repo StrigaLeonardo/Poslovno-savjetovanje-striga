@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import ServicesPreview from "./components/ServicesPreview";
 import Founder from "./components/Founder";
+import ContactSection from "./components/ContactSection";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,6 +19,7 @@ function App() {
       <Hero />
       <ServicesPreview />
       <Founder />
+      <ContactSection />
       <Footer />
     </>
   );
