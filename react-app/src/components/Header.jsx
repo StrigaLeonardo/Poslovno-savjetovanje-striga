@@ -1,13 +1,14 @@
 import '../styles/page-header.css';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
     <div className="page-header">
       <div className="header-container">
         <div className="page-title">
-          <a href="https://striga-savjetovanje.com">
+          <Link to="/" className="logo-link">
             <h1 className="roboto-light">Štriga poslovno savjetovanje</h1>
-          </a>
+          </Link>
         </div>
         <nav className="page-navigation" id="page-navigation">
           <a href="o-nama">

@@ -1,11 +1,13 @@
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
   return (
     <div className="page-footer">
       <div className="footer-content">
         <div className="footer-col footer-brandpolicies">
-          <a href="https://striga-savjetovanje.com" className="footer-title roboto-light">
+          <Link to="/" className="footer-title roboto-light">
             Štriga poslovno savjetovanje
-          </a>
+          </Link>
           <div className="footer-policies-linkedin">
             <div className="footer-policies roboto-light">
               <a href="privacy-policy">Pravila privatnosti</a>
