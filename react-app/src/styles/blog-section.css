@@ -1,3 +1,31 @@
+/* Loading skeleton styles */
+.blog-card-loading {
+  opacity: 0.7;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* Error and empty message styles */
+.error-message,
+.empty-message {
+  text-align: center;
+  padding: 3em;
+  color: #666;
+  font-style: italic;
+  grid-column: 1 / -1;
+}
+
 /* Homepage blog section layout */
 
 /* Container */
@@ -79,7 +107,6 @@
     display: none;
   }
 
-  /* Flex items are the <a class="card-link"> elements */
   .blog-section .blog-scroll-wrapper .card-link {
     flex: 0 0 calc(100vw - 40px);
     min-width: calc(100vw - 40px);
