@@ -9,6 +9,7 @@ import Hero from "./components/Hero";
 import ServicesPreview from "./components/ServicesPreview";
 import Founder from "./components/Founder";
 import ContactSection from "./components/ContactSection";
+import BlogSection from "./components/BlogSection";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -20,6 +21,7 @@ function App() {
       <ServicesPreview />
       <Founder />
       <ContactSection />
+      <BlogSection />
       <Footer />
     </>
   );
