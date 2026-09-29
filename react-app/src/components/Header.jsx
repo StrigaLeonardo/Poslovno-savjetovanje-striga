@@ -45,7 +45,7 @@ const Header = () => {
               </Link>
             </li>
             <li className="dropdown">
-              <a href="javascript:void(0)" className="roboto-medium">
+              <button type="button" className="roboto-medium" aria-expanded="false" aria-controls="services-submenu">
                 <span className="usluge-text">USLUGE</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -56,8 +56,8 @@ const Header = () => {
                 >
                   <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
                 </svg>
-              </a>
-              <div className="dropdown-content">
+              </button>
+              <div className="dropdown-content" id="services-submenu">
                 <Link to="/financijsko" className="roboto-light">
                   Financijsko savjetovanje
                 </Link>
