@@ -1,8 +1,14 @@
 import "../styles/page-header.css";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Header = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   useEffect(() => {
     if (typeof window === "undefined") return;
 
@@ -29,6 +35,41 @@ const Header = () => {
     };
   }, []);
 
+  const hamburgerIcon = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  );
+
+  const xIcon = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  );
+
   return (
     <div className="page-header">
       <div className="header-container">
@@ -37,7 +78,11 @@ const Header = () => {
             <h1 className="roboto-light">Štriga poslovno savjetovanje</h1>
           </Link>
         </div>
-        <nav className="page-navigation" id="page-navigation" aria-label="Glavna navigacija">
+        <nav
+          className="page-navigation"
+          id="page-navigation"
+          aria-label="Glavna navigacija"
+        >
           <ul className="navigation-list">
             <li>
               <Link to="/o-nama" className="roboto-medium">
@@ -45,7 +90,12 @@ const Header = () => {
               </Link>
             </li>
             <li className="dropdown">
-              <button type="button" className="roboto-medium" aria-expanded="false" aria-controls="services-submenu">
+              <button
+                type="button"
+                className="roboto-medium"
+                aria-expanded="false"
+                aria-controls="services-submenu"
+              >
                 <span className="usluge-text">USLUGE</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -81,6 +131,14 @@ const Header = () => {
             </li>
           </ul>
         </nav>
+        <button
+          className="mobile-menu-button"
+          onClick={toggleMobileMenu}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
+        >
+          {isMobileMenuOpen ? xIcon : hamburgerIcon}
+        </button>
       </div>
     </div>
   );
