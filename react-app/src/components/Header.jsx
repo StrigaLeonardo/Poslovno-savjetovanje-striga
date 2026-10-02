@@ -4,36 +4,105 @@ import { useEffect, useState } from "react";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesDropOpen, setIsServicesDropOpen] = useState(false);
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    if (isMobileMenuOpen) {
+      closeMobileMenu();
+      return;
+    }
+
+    setIsMobileMenuOpen(true);
   };
 
+  const toggleServicesDropdown = () => {
+    setIsServicesDropOpen((isOpen) => !isOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+    setIsServicesDropOpen(false);
+  };
+
+  // Scroll effect for header shrink
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const maxScrollY = 500; // pixels over which to apply the effect
+    const maxScrollY = 500;
     const root = document.documentElement;
 
     const updateScroll = () => {
       const scrollY = window.scrollY;
       const progress = Math.min(Math.max(scrollY / maxScrollY, 0), 1);
+
       root.style.setProperty("--scroll-progress", progress.toString());
     };
 
-    // Initialize with current scroll position
     updateScroll();
-
-    // Add event listener
     window.addEventListener("scroll", updateScroll);
 
-    // Cleanup function
     return () => {
       window.removeEventListener("scroll", updateScroll);
-      // Reset the property on unmount
       root.style.removeProperty("--scroll-progress");
     };
   }, []);
+
+  // Handle body scroll locking and backdrop when mobile menu is open
+  useEffect(() => {
+    let backdrop = null;
+
+    const handleTouchMove = (event) => {
+      event.preventDefault();
+    };
+
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.addEventListener("touchmove", handleTouchMove, {
+        passive: false,
+      });
+
+      backdrop = document.createElement("div");
+      backdrop.className = "mobile-menu-backdrop";
+      backdrop.onclick = closeMobileMenu;
+
+      document.body.appendChild(backdrop);
+      document.body.classList.add("body-menu-open");
+    } else {
+      document.body.style.overflow = "";
+      document.body.classList.remove("body-menu-open");
+
+      const mobileMenuButton = document.querySelector(".mobile-menu-button");
+
+      if (mobileMenuButton) {
+        mobileMenuButton.focus();
+      }
+    }
+
+    return () => {
+      if (backdrop && document.body.contains(backdrop)) {
+        backdrop.remove();
+      }
+
+      document.body.style.overflow = "";
+      document.body.removeEventListener("touchmove", handleTouchMove);
+      document.body.classList.remove("body-menu-open");
+    };
+  }, [isMobileMenuOpen]);
+
+  // Handle escape key to close menu
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === "Escape" && isMobileMenuOpen) {
+        closeMobileMenu();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [isMobileMenuOpen]);
 
   const hamburgerIcon = (
     <svg
@@ -47,9 +116,9 @@ const Header = () => {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <line x1="3" y1="6" x2="21" y2="6"></line>
-      <line x1="3" y1="12" x2="21" y2="12"></line>
-      <line x1="3" y1="18" x2="21" y2="18"></line>
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="18" x2="21" y2="18" />
     </svg>
   );
 
@@ -65,8 +134,8 @@ const Header = () => {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <line x1="18" y1="6" x2="6" y2="18"></line>
-      <line x1="6" y1="6" x2="18" y2="18"></line>
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
   );
 
@@ -79,7 +148,9 @@ const Header = () => {
           </Link>
         </div>
         <nav
-          className="page-navigation"
+          className={`page-navigation ${
+            isMobileMenuOpen ? "is-mobile-open" : ""
+          }`}
           id="page-navigation"
           aria-label="Glavna navigacija"
         >
@@ -93,8 +164,9 @@ const Header = () => {
               <button
                 type="button"
                 className="roboto-medium"
-                aria-expanded="false"
+                aria-expanded={isServicesDropOpen}
                 aria-controls="services-submenu"
+                onClick={toggleServicesDropdown}
               >
                 <span className="usluge-text">USLUGE</span>
                 <svg
@@ -133,9 +205,11 @@ const Header = () => {
         </nav>
         <button
           className="mobile-menu-button"
+          type="button"
           onClick={toggleMobileMenu}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMobileMenuOpen}
+          aria-controls="page-navigation"
         >
           {isMobileMenuOpen ? xIcon : hamburgerIcon}
         </button>
