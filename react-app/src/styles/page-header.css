@@ -26,10 +26,14 @@
 /* Logo */
 .page-title {
   margin-right: auto;
+  white-space: nowrap;
 }
 
 .page-title h1 {
-  font-size: calc(2.4em - var(--scroll-progress, 0) * 1em);
+  --title-base: clamp(1.5rem, 2vw + 0.5rem, 2.4em);
+  font-size: calc(
+    var(--title-base) - var(--scroll-progress, 0) * (var(--title-base) - 1.4em)
+  );
 }
 
 .page-title a {
@@ -75,6 +79,7 @@
   align-items: center;
   font-size: 0.9rem;
   color: #cdd9e8;
+  letter-spacing: 0.03em;
 }
 
 .navigation-list > li > a::after,
@@ -193,7 +198,7 @@
 }
 
 /* Mobile styles */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .page-navigation {
     position: absolute;
     top: 100%;
@@ -298,17 +303,16 @@
   .mobile-menu-button {
     display: flex;
     outline: none;
-    transition: transform 0.2s ease;
+    transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  .mobile-menu-button:hover {
-    transform: scale(1.05);
+  .mobile-menu-button:active {
+    transform: scale(0.96);
   }
 
   /* Override title scroll-based shrink */
   .page-title h1 {
-    font-size: 1.4rem;
-    line-height: 1.2;
+    font-size: 1.5rem;
   }
 
   .page-header {
@@ -316,7 +320,7 @@
   }
 
   .header-container {
-    padding: 0.2em 1.5em 0.2em 0.5em;
+    padding: 0.5em 0.8em 0.5em 0.3em;
   }
 
   /* Mobile dropdown behavior */
